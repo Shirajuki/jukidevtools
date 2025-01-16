@@ -40,7 +40,7 @@ export const TOOL_ROUTES: IToolRouteGroup[] = [
 			{
 				label: "HTML Formatter",
 				path: "/html-formatter",
-				component: lazy(() => import("./HtmlFormatter/HtmlFormatter.component")),
+				component: lazy(() => import("./_web/HtmlFormatter.component")),
 				icon: MenuUnfoldOutlined,
 				alias: ["HTML Beautifier", "HTML Beautify"],
 				description:
@@ -49,7 +49,7 @@ export const TOOL_ROUTES: IToolRouteGroup[] = [
 			{
 				label: "HTML Minifier",
 				path: "/html-minifier",
-				component: lazy(() => import("./HtmlMinifier/HtmlMinifier.component")),
+				component: lazy(() => import("./_web/HtmlMinifier.component")),
 				icon: CompressOutlined,
 				alias: ["HTML Minify", "HTML Uglifier", "HTML Uglify"],
 				description:
@@ -58,7 +58,7 @@ export const TOOL_ROUTES: IToolRouteGroup[] = [
 			{
 				label: "CSS Formatter",
 				path: "/css-formatter",
-				component: lazy(() => import("./CssFormatter/CssFormatter.component")),
+				component: lazy(() => import("./_web/CssFormatter.component")),
 				icon: MenuUnfoldOutlined,
 				alias: ["CSS Beautifier", "CSS Beautify"],
 				description:
@@ -67,7 +67,7 @@ export const TOOL_ROUTES: IToolRouteGroup[] = [
 			{
 				label: "CSS Minifier",
 				path: "/css-minifier",
-				component: lazy(() => import("./CssMinifier/CssMinifier.component")),
+				component: lazy(() => import("./_web/CssMinifier.component")),
 				icon: CompressOutlined,
 				alias: ["CSS Minify", "CSS Uglifier", "CSS Uglify"],
 				description:
@@ -76,7 +76,7 @@ export const TOOL_ROUTES: IToolRouteGroup[] = [
 			{
 				label: "JavaScript Formatter",
 				path: "/javascript-formatter",
-				component: lazy(() => import("./JavaScriptFormatter/JavaScriptFormatter.component")),
+				component: lazy(() => import("./_web/JavaScriptFormatter.component")),
 				icon: MenuUnfoldOutlined,
 				alias: ["JavaScript JS Formatter", "JavaScript JS Beautifier", "JavaScript JS Beautify"],
 				description:
@@ -85,7 +85,7 @@ export const TOOL_ROUTES: IToolRouteGroup[] = [
 			{
 				label: "JavaScript Minifier",
 				path: "/javascript-minifier",
-				component: lazy(() => import("./JavaScriptMinifier/JavaScriptMinifier.component")),
+				component: lazy(() => import("./_web/JavaScriptMinifier.component")),
 				icon: CompressOutlined,
 				alias: ["JavaScript JS Minify", "JavaScript JS Uglifier", "JavaScript JS Uglify"],
 				description:
@@ -94,7 +94,7 @@ export const TOOL_ROUTES: IToolRouteGroup[] = [
 			{
 				label: "HTML Viewer",
 				path: "/html-viewer",
-				component: lazy(() => import("./HtmlViewer/HtmlViewer.component")),
+				component: lazy(() => import("./_web/HtmlViewer.component")),
 				icon: EyeOutlined,
 				alias: ["HTML Previewer", "HTML Sandbox"],
 				description:
@@ -103,7 +103,7 @@ export const TOOL_ROUTES: IToolRouteGroup[] = [
 			{
 				label: "SQL Formatter",
 				path: "/sql-formatter",
-				component: lazy(() => import("./SqlFormatter/SqlFormatter.component")),
+				component: lazy(() => import("./_web/SqlFormatter.component")),
 				icon: ConsoleSqlOutlined,
 				alias: ["SQL Beautifier", "SQL Beautify"],
 				description:
@@ -117,7 +117,7 @@ export const TOOL_ROUTES: IToolRouteGroup[] = [
 			{
 				label: "Text Diff Checker",
 				path: "/text-diff-checker",
-				component: lazy(() => import("./TextDiffChecker/TextDiffChecker.component")),
+				component: lazy(() => import("./_text/TextDiffChecker.component")),
 				icon: BuildOutlined,
 				alias: ["Text String Difference Checker", "Compare Text String Difference"],
 				description:
@@ -126,7 +126,7 @@ export const TOOL_ROUTES: IToolRouteGroup[] = [
 			{
 				label: "Word Counter",
 				path: "/word-counter",
-				component: lazy(() => import("./WordCounter/WordCounter.component")),
+				component: lazy(() => import("./_text/WordCounter.component")),
 				icon: OrderedListOutlined,
 				alias: [
 					"Text String Word Counter",
@@ -139,7 +139,7 @@ export const TOOL_ROUTES: IToolRouteGroup[] = [
 			{
 				label: "Lorem Ipsum Generator",
 				path: "/lorem-ipsum-generator",
-				component: lazy(() => import("./LoremIpsumGenerator/LoremIpsumGenerator.component")),
+				component: lazy(() => import("./_text/LoremIpsumGenerator.component")),
 				icon: FieldStringOutlined,
 				alias: ["Random Text String Generator"],
 				description:
@@ -148,7 +148,7 @@ export const TOOL_ROUTES: IToolRouteGroup[] = [
 			{
 				label: "Random String Generator",
 				path: "/random-string-generator",
-				component: lazy(() => import("./RandomStringGenerator/RandomStringGenerator.component")),
+				component: lazy(() => import("./_text/RandomStringGenerator.component")),
 				icon: FieldStringOutlined,
 				alias: ["Random Text Generator"],
 				description:
@@ -157,7 +157,7 @@ export const TOOL_ROUTES: IToolRouteGroup[] = [
 			{
 				label: "UUID Generator",
 				path: "/uuid-generator",
-				component: lazy(() => import("./UuidGenerator/UuidGenerator.component")),
+				component: lazy(() => import("./_text/UuidGenerator.component")),
 				icon: FieldNumberOutlined,
 				alias: ["UUID Randomizer"],
 				description:
@@ -166,7 +166,7 @@ export const TOOL_ROUTES: IToolRouteGroup[] = [
 			{
 				label: "Text Case Converter",
 				path: "/text-case-converter",
-				component: lazy(() => import("./TextCaseConverter/TextCaseConverter.component")),
+				component: lazy(() => import("./_text/TextCaseConverter.component")),
 				icon: RetweetOutlined,
 				alias: ["Text String Upper Lower Capitalized Case Converter"],
 				description:
@@ -175,7 +175,7 @@ export const TOOL_ROUTES: IToolRouteGroup[] = [
 			{
 				label: "List Sorter / Randomizer",
 				path: "/list-sorter-randomizer",
-				component: lazy(() => import("./ListSorterRandomizer/ListSorterRandomizer.component")),
+				component: lazy(() => import("./_text/ListSorterRandomizer.component")),
 				icon: SortAscendingOutlined,
 				alias: ["Text String List Line Sorter / Randomizer"],
 				description:
@@ -189,7 +189,7 @@ export const TOOL_ROUTES: IToolRouteGroup[] = [
 			{
 				label: "JSON Formatter",
 				path: "/json-formatter",
-				component: lazy(() => import("./JsonFormatter/JsonFormatter.component")),
+				component: lazy(() => import("./_image/_json/JsonFormatter.component")),
 				icon: MenuUnfoldOutlined,
 				alias: ["JSON Beautifier", "JSON Beautify"],
 				description:
@@ -198,7 +198,7 @@ export const TOOL_ROUTES: IToolRouteGroup[] = [
 			{
 				label: "JSON Minifier",
 				path: "/json-minifier",
-				component: lazy(() => import("./JsonMinifier/JsonMinifier.component")),
+				component: lazy(() => import("./_image/_json/JsonMinifier.component")),
 				icon: CompressOutlined,
 				alias: ["JSON Minify", "JSON Uglifier", "JSON Uglify"],
 				description:
@@ -207,7 +207,7 @@ export const TOOL_ROUTES: IToolRouteGroup[] = [
 			{
 				label: "JSON to XML Converter",
 				path: "/json-to-xml-converter",
-				component: lazy(() => import("./JsonToXmlConverter/JsonToXmlConverter.component")),
+				component: lazy(() => import("./_image/_json/JsonToXmlConverter.component")),
 				icon: RetweetOutlined,
 				description:
 					"Effortlessly convert JSON to XML: JSON to XML Converter ensures seamless data exchange between formats, boosting your development workflow.",
@@ -215,7 +215,7 @@ export const TOOL_ROUTES: IToolRouteGroup[] = [
 			{
 				label: "XML to JSON Converter",
 				path: "/xml-to-json-converter",
-				component: lazy(() => import("./XmlToJsonConverter/XmlToJsonConverter.component")),
+				component: lazy(() => import("./_image/_json/XmlToJsonConverter.component")),
 				icon: RetweetOutlined,
 				description:
 					"Effortlessly convert XML to JSON. True Devtools' free online converter transforms your data with ease. Get clean, human-readable JSON in seconds!",
@@ -223,7 +223,7 @@ export const TOOL_ROUTES: IToolRouteGroup[] = [
 			{
 				label: "JSON to YAML Converter",
 				path: "/json-to-yaml-converter",
-				component: lazy(() => import("./JsonToYamlConverter/JsonToYamlConverter.component")),
+				component: lazy(() => import("./_image/_json/JsonToYamlConverter.component")),
 				icon: RetweetOutlined,
 				description:
 					"Effortlessly convert JSON to YAML. JSON to YAML Converter simplifies data migration between formats, boosting your development workflow.",
@@ -231,7 +231,7 @@ export const TOOL_ROUTES: IToolRouteGroup[] = [
 			{
 				label: "YAML to JSON Converter",
 				path: "/yaml-to-json-converter",
-				component: lazy(() => import("./YamlToJsonConverter/YamlToJsonConverter.component")),
+				component: lazy(() => import("./_image/_json/YamlToJsonConverter.component")),
 				icon: RetweetOutlined,
 				description:
 					"Effortlessly convert YAML to JSON. YAML to JSON Converter ensures seamless data exchange between formats, boosting your development workflow.",
@@ -244,7 +244,7 @@ export const TOOL_ROUTES: IToolRouteGroup[] = [
 			{
 				label: "Unicode to Hex Converter",
 				path: "/unicode-to-hex-converter",
-				component: lazy(() => import("./UnicodeToHexConverter/UnicodeToHexConverter.component")),
+				component: lazy(() => import("./_encoding/UnicodeToHexConverter.component")),
 				icon: RetweetOutlined,
 				alias: ["Unicode Text String to Hex Code Converter"],
 				description:
@@ -253,7 +253,7 @@ export const TOOL_ROUTES: IToolRouteGroup[] = [
 			{
 				label: "Hex to Unicode Converter",
 				path: "/hex-to-unicode-converter",
-				component: lazy(() => import("./HexToUnicodeConverter/HexToUnicodeConverter.component")),
+				component: lazy(() => import("./_encoding/HexToUnicodeConverter.component")),
 				icon: RetweetOutlined,
 				alias: ["Hex Code to Unicode Text String Converter"],
 				description:
@@ -262,9 +262,7 @@ export const TOOL_ROUTES: IToolRouteGroup[] = [
 			{
 				label: "Backslash Escape / Unescape",
 				path: "/backslash-escape-unescape",
-				component: lazy(
-					() => import("./BackslashEscapeUnescape/BackslashEscapeUnescape.component"),
-				),
+				component: lazy(() => import("./_encoding/BackslashEscapeUnescape.component")),
 				icon: PercentageOutlined,
 				alias: ["JavaScript JS Text String Backslash Escaper / Unescaper / Encoder / Decoder"],
 				description:
@@ -273,7 +271,7 @@ export const TOOL_ROUTES: IToolRouteGroup[] = [
 			{
 				label: "Base64 Encoder / Decoder",
 				path: "/base64-encoder-decoder",
-				component: lazy(() => import("./Base64EncoderDecoder/Base64EncoderDecoder.component")),
+				component: lazy(() => import("./_encoding/Base64EncoderDecoder.component")),
 				icon: FileZipOutlined,
 				alias: ["Base64 Parser"],
 				description:
@@ -282,7 +280,7 @@ export const TOOL_ROUTES: IToolRouteGroup[] = [
 			{
 				label: "URL Encoder / Decoder",
 				path: "/url-encoder-decoder",
-				component: lazy(() => import("./UrlEncoderDecoder/UrlEncoderDecoder.component")),
+				component: lazy(() => import("./_encoding/UrlEncoderDecoder.component")),
 				icon: LinkOutlined,
 				alias: ["URL Parser"],
 				description:
@@ -291,9 +289,7 @@ export const TOOL_ROUTES: IToolRouteGroup[] = [
 			{
 				label: "Digital Certificate Decoder",
 				path: "/digital-certificate-decoder",
-				component: lazy(
-					() => import("./DigitalCertificateDecoder/DigitalCertificateDecoder.component"),
-				),
+				component: lazy(() => import("./_encoding/DigitalCertificateDecoder.component")),
 				icon: LockOutlined,
 				alias: ["X509 SSL Digital Certificate Decoder Parser"],
 				description:
@@ -307,7 +303,7 @@ export const TOOL_ROUTES: IToolRouteGroup[] = [
 			{
 				label: "Image Resizer",
 				path: "/image-resizer",
-				component: lazy(() => import("./ImageResizer/ImageResizer.component")),
+				component: lazy(() => import("./_image/ImageResizer.component")),
 				icon: PictureOutlined,
 				alias: ["Picture Photo Resizer"],
 				description:
@@ -316,7 +312,7 @@ export const TOOL_ROUTES: IToolRouteGroup[] = [
 			{
 				label: "JPEG / WEBP Compressor",
 				path: "/image-compressor",
-				component: lazy(() => import("./ImageCompressor/ImageCompressor.component")),
+				component: lazy(() => import("./_image/ImageCompressor.component")),
 				icon: FileImageOutlined,
 				alias: ["Picture Photo Compressor Compression"],
 				description:
@@ -325,7 +321,7 @@ export const TOOL_ROUTES: IToolRouteGroup[] = [
 			{
 				label: "Image Format Converter",
 				path: "/image-format-converter",
-				component: lazy(() => import("./ImageFormatConverter/ImageFormatConverter.component")),
+				component: lazy(() => import("./_image/ImageFormatConverter.component")),
 				icon: RetweetOutlined,
 				alias: ["Image Picture Photo Format Converter"],
 				description:
@@ -339,21 +335,21 @@ export const TOOL_ROUTES: IToolRouteGroup[] = [
 			{
 				label: "cURL Converter",
 				path: "/curl-converter",
-				component: lazy(() => import("./SqlFormatter/SqlFormatter.component")),
+				component: lazy(() => import("./_web/SqlFormatter.component")),
 				icon: LinkOutlined,
 				description: "TODO",
 			},
 			{
 				label: "Docker Compose Converter",
 				path: "/docker-compose-converter",
-				component: lazy(() => import("./SqlFormatter/SqlFormatter.component")),
+				component: lazy(() => import("./_web/SqlFormatter.component")),
 				icon: LinkOutlined,
 				description: "TODO",
 			},
 			{
 				label: "Regex Tester",
 				path: "/regex-tester",
-				component: lazy(() => import("./RegexTester/RegexTester.component")),
+				component: lazy(() => import("./_utilities/RegexTester.component")),
 				icon: TrademarkCircleOutlined,
 				alias: [
 					"Regular Expression Tester",
@@ -371,14 +367,14 @@ export const TOOL_ROUTES: IToolRouteGroup[] = [
 			{
 				label: "CyberChef",
 				path: "https://gchq.github.io/CyberChef/",
-				component: lazy(() => import("./SqlFormatter/SqlFormatter.component")),
+				component: lazy(() => import("./_web/SqlFormatter.component")),
 				icon: LinkOutlined,
 				description: "TODO",
 			},
 			{
 				label: "JWT.io",
 				path: "https://jwt.io/",
-				component: lazy(() => import("./SqlFormatter/SqlFormatter.component")),
+				component: lazy(() => import("./_web/SqlFormatter.component")),
 				icon: LinkOutlined,
 				description: "TODO",
 			},

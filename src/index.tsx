@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider as ReduxProvider } from "react-redux";
-import { Router } from "./routes/Router/Router.component";
+import { Router } from "./routes/Router.component";
 import store from "./store";
 
 import "./index.scss";
