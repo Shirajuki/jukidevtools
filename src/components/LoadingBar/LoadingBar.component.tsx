@@ -1,28 +1,22 @@
-import { useEffect, useRef } from 'react'
-import { useLocation } from 'react-router'
-import TopLoadingBar, { LoadingBarRef } from 'react-top-loading-bar'
+import { useEffect, useRef } from "react";
+import { useLocation } from "react-router";
+import TopLoadingBar, { type LoadingBarRef } from "react-top-loading-bar";
 
 const LoadingBar = () => {
-	const location = useLocation()
-	const ref = useRef<LoadingBarRef>(null)
+	const location = useLocation();
+	const ref = useRef<LoadingBarRef>(null);
 
+	// biome-ignore lint/correctness/useExhaustiveDependencies: this effect should update when location changes
 	useEffect(() => {
-		ref.current!.complete()
-		ref.current!.continuousStart()
-		
+		ref.current?.complete();
+		ref.current?.continuousStart();
+
 		setTimeout(() => {
-			ref.current!.complete()
-		}, 100)
-	}, [location])
+			ref.current?.complete();
+		}, 100);
+	}, [location]);
 
-	return (
-		<TopLoadingBar
-			ref={ref}
-			color='#FF9800'
-			height={3}
-			waitingTime={500}
-		/>
-	)
-}
+	return <TopLoadingBar ref={ref} color="#FF9800" height={3} waitingTime={500} />;
+};
 
-export default LoadingBar
+export default LoadingBar;
