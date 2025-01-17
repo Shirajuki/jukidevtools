@@ -25,8 +25,7 @@ const WebJavascriptFormatterLazyImport = createFileRoute(
   '/_web/javascript-formatter',
 )()
 const WebHtmlViewerLazyImport = createFileRoute('/_web/html-viewer')()
-const WebHtmlMinifierLazyImport = createFileRoute('/_web/html-minifier')()
-const WebHtmlFormatterLazyImport = createFileRoute('/_web/html-formatter')()
+const WebHtmlBeautifierLazyImport = createFileRoute('/_web/html-beautifier')()
 const WebCssMinifierLazyImport = createFileRoute('/_web/css-minifier')()
 const WebCssFormatterLazyImport = createFileRoute('/_web/css-formatter')()
 const UtilitiesRegexTesterLazyImport = createFileRoute(
@@ -131,20 +130,12 @@ const WebHtmlViewerLazyRoute = WebHtmlViewerLazyImport.update({
   import('./routes/_web/html-viewer.lazy').then((d) => d.Route),
 )
 
-const WebHtmlMinifierLazyRoute = WebHtmlMinifierLazyImport.update({
-  id: '/_web/html-minifier',
-  path: '/html-minifier',
+const WebHtmlBeautifierLazyRoute = WebHtmlBeautifierLazyImport.update({
+  id: '/_web/html-beautifier',
+  path: '/html-beautifier',
   getParentRoute: () => rootRoute,
 } as any).lazy(() =>
-  import('./routes/_web/html-minifier.lazy').then((d) => d.Route),
-)
-
-const WebHtmlFormatterLazyRoute = WebHtmlFormatterLazyImport.update({
-  id: '/_web/html-formatter',
-  path: '/html-formatter',
-  getParentRoute: () => rootRoute,
-} as any).lazy(() =>
-  import('./routes/_web/html-formatter.lazy').then((d) => d.Route),
+  import('./routes/_web/html-beautifier.lazy').then((d) => d.Route),
 )
 
 const WebCssMinifierLazyRoute = WebCssMinifierLazyImport.update({
@@ -559,18 +550,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WebCssMinifierLazyImport
       parentRoute: typeof rootRoute
     }
-    '/_web/html-formatter': {
-      id: '/_web/html-formatter'
-      path: '/html-formatter'
-      fullPath: '/html-formatter'
-      preLoaderRoute: typeof WebHtmlFormatterLazyImport
-      parentRoute: typeof rootRoute
-    }
-    '/_web/html-minifier': {
-      id: '/_web/html-minifier'
-      path: '/html-minifier'
-      fullPath: '/html-minifier'
-      preLoaderRoute: typeof WebHtmlMinifierLazyImport
+    '/_web/html-beautifier': {
+      id: '/_web/html-beautifier'
+      path: '/html-beautifier'
+      fullPath: '/html-beautifier'
+      preLoaderRoute: typeof WebHtmlBeautifierLazyImport
       parentRoute: typeof rootRoute
     }
     '/_web/html-viewer': {
@@ -633,8 +617,7 @@ export interface FileRoutesByFullPath {
   '/regex-tester': typeof UtilitiesRegexTesterLazyRoute
   '/css-formatter': typeof WebCssFormatterLazyRoute
   '/css-minifier': typeof WebCssMinifierLazyRoute
-  '/html-formatter': typeof WebHtmlFormatterLazyRoute
-  '/html-minifier': typeof WebHtmlMinifierLazyRoute
+  '/html-beautifier': typeof WebHtmlBeautifierLazyRoute
   '/html-viewer': typeof WebHtmlViewerLazyRoute
   '/javascript-formatter': typeof WebJavascriptFormatterLazyRoute
   '/javascript-minifier': typeof WebJavascriptMinifierLazyRoute
@@ -668,8 +651,7 @@ export interface FileRoutesByTo {
   '/regex-tester': typeof UtilitiesRegexTesterLazyRoute
   '/css-formatter': typeof WebCssFormatterLazyRoute
   '/css-minifier': typeof WebCssMinifierLazyRoute
-  '/html-formatter': typeof WebHtmlFormatterLazyRoute
-  '/html-minifier': typeof WebHtmlMinifierLazyRoute
+  '/html-beautifier': typeof WebHtmlBeautifierLazyRoute
   '/html-viewer': typeof WebHtmlViewerLazyRoute
   '/javascript-formatter': typeof WebJavascriptFormatterLazyRoute
   '/javascript-minifier': typeof WebJavascriptMinifierLazyRoute
@@ -704,8 +686,7 @@ export interface FileRoutesById {
   '/_utilities/regex-tester': typeof UtilitiesRegexTesterLazyRoute
   '/_web/css-formatter': typeof WebCssFormatterLazyRoute
   '/_web/css-minifier': typeof WebCssMinifierLazyRoute
-  '/_web/html-formatter': typeof WebHtmlFormatterLazyRoute
-  '/_web/html-minifier': typeof WebHtmlMinifierLazyRoute
+  '/_web/html-beautifier': typeof WebHtmlBeautifierLazyRoute
   '/_web/html-viewer': typeof WebHtmlViewerLazyRoute
   '/_web/javascript-formatter': typeof WebJavascriptFormatterLazyRoute
   '/_web/javascript-minifier': typeof WebJavascriptMinifierLazyRoute
@@ -741,8 +722,7 @@ export interface FileRouteTypes {
     | '/regex-tester'
     | '/css-formatter'
     | '/css-minifier'
-    | '/html-formatter'
-    | '/html-minifier'
+    | '/html-beautifier'
     | '/html-viewer'
     | '/javascript-formatter'
     | '/javascript-minifier'
@@ -775,8 +755,7 @@ export interface FileRouteTypes {
     | '/regex-tester'
     | '/css-formatter'
     | '/css-minifier'
-    | '/html-formatter'
-    | '/html-minifier'
+    | '/html-beautifier'
     | '/html-viewer'
     | '/javascript-formatter'
     | '/javascript-minifier'
@@ -809,8 +788,7 @@ export interface FileRouteTypes {
     | '/_utilities/regex-tester'
     | '/_web/css-formatter'
     | '/_web/css-minifier'
-    | '/_web/html-formatter'
-    | '/_web/html-minifier'
+    | '/_web/html-beautifier'
     | '/_web/html-viewer'
     | '/_web/javascript-formatter'
     | '/_web/javascript-minifier'
@@ -845,8 +823,7 @@ export interface RootRouteChildren {
   UtilitiesRegexTesterLazyRoute: typeof UtilitiesRegexTesterLazyRoute
   WebCssFormatterLazyRoute: typeof WebCssFormatterLazyRoute
   WebCssMinifierLazyRoute: typeof WebCssMinifierLazyRoute
-  WebHtmlFormatterLazyRoute: typeof WebHtmlFormatterLazyRoute
-  WebHtmlMinifierLazyRoute: typeof WebHtmlMinifierLazyRoute
+  WebHtmlBeautifierLazyRoute: typeof WebHtmlBeautifierLazyRoute
   WebHtmlViewerLazyRoute: typeof WebHtmlViewerLazyRoute
   WebJavascriptFormatterLazyRoute: typeof WebJavascriptFormatterLazyRoute
   WebJavascriptMinifierLazyRoute: typeof WebJavascriptMinifierLazyRoute
@@ -884,8 +861,7 @@ const rootRouteChildren: RootRouteChildren = {
   UtilitiesRegexTesterLazyRoute: UtilitiesRegexTesterLazyRoute,
   WebCssFormatterLazyRoute: WebCssFormatterLazyRoute,
   WebCssMinifierLazyRoute: WebCssMinifierLazyRoute,
-  WebHtmlFormatterLazyRoute: WebHtmlFormatterLazyRoute,
-  WebHtmlMinifierLazyRoute: WebHtmlMinifierLazyRoute,
+  WebHtmlBeautifierLazyRoute: WebHtmlBeautifierLazyRoute,
   WebHtmlViewerLazyRoute: WebHtmlViewerLazyRoute,
   WebJavascriptFormatterLazyRoute: WebJavascriptFormatterLazyRoute,
   WebJavascriptMinifierLazyRoute: WebJavascriptMinifierLazyRoute,
@@ -928,8 +904,7 @@ export const routeTree = rootRoute
         "/_utilities/regex-tester",
         "/_web/css-formatter",
         "/_web/css-minifier",
-        "/_web/html-formatter",
-        "/_web/html-minifier",
+        "/_web/html-beautifier",
         "/_web/html-viewer",
         "/_web/javascript-formatter",
         "/_web/javascript-minifier",
@@ -1014,11 +989,8 @@ export const routeTree = rootRoute
     "/_web/css-minifier": {
       "filePath": "_web/css-minifier.lazy.tsx"
     },
-    "/_web/html-formatter": {
-      "filePath": "_web/html-formatter.lazy.tsx"
-    },
-    "/_web/html-minifier": {
-      "filePath": "_web/html-minifier.lazy.tsx"
+    "/_web/html-beautifier": {
+      "filePath": "_web/html-beautifier.lazy.tsx"
     },
     "/_web/html-viewer": {
       "filePath": "_web/html-viewer.lazy.tsx"

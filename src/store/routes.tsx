@@ -37,20 +37,12 @@ export const TOOL_ROUTES: IToolRouteGroup[] = [
 		label: "Web tools",
 		routes: [
 			{
-				label: "HTML Formatter",
-				path: "/html-formatter",
+				label: "HTML Beautifier",
+				path: "/html-beautifier",
 				icon: MenuUnfoldOutlined,
-				alias: ["HTML Beautifier", "HTML Beautify"],
+				alias: ["HTML Beautify", "HTML Formatter", "HTML Minify", "HTML Minifier"],
 				description:
 					"Clean and beautify HTML code, making it easy to read and maintain. Boost readability, spot errors faster with perfectly formatted HTML.",
-			},
-			{
-				label: "HTML Minifier",
-				path: "/html-minifier",
-				icon: CompressOutlined,
-				alias: ["HTML Minify", "HTML Uglifier", "HTML Uglify"],
-				description:
-					"Shrink your HTML code. Trim whitespaces and unnecessary tags for faster loading times and better SEO.",
 			},
 			{
 				label: "CSS Formatter",
