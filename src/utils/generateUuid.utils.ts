@@ -1,5 +1,5 @@
 import { v1 as uuidv1, v3 as uuidv3, v4 as uuidv4, v5 as uuidv5 } from "uuid";
-import { IOptionTypes } from "../routes/_text/UuidGenerator.component";
+import { IOptionTypes } from "../routes/_text/uuid-generator.lazy";
 
 export type IUuidVersion = "1" | "3" | "4" | "5";
 
