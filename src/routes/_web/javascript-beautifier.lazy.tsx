@@ -7,23 +7,23 @@ import { success } from "../../store/message/message.slice";
 import useCopyText from "../../hooks/useCopyText.hooks";
 import InputOutputLayout from "../../layouts/InputOutputLayout/InputOutputLayout.component";
 import CodeEditor from "../../components/CodeEditor.component";
-import htmlSample from "../../data/html-sample.html?raw";
-import beautifyHtml from "../../utils/beautifyHtml.utils";
+import jsSample from "../../data/js-sample.js?raw";
+import beautifyJs from "../../utils/beautifyJs.utils";
 import { createLazyFileRoute } from "@tanstack/react-router";
-import minifyHtml from "../../utils/minifyHtml.utils";
+import minifyJs from "../../utils/minifyJs.utils";
 
-export const Route = createLazyFileRoute("/_web/html-beautifier")({
-	component: HtmlBeautifier,
+export const Route = createLazyFileRoute("/_web/javascript-beautifier")({
+	component: JavaScriptBeautifier,
 });
 
 export interface IOptionTypes {
-	html: string;
-	formattedHtml: string;
+	js: string;
+	formattedJs: string;
 	lastUsed: "format" | "minify";
 	tabSize: number;
 }
 
-function HtmlBeautifier() {
+function JavaScriptBeautifier() {
 	const dispatch = useAppDispatch();
 	const copyText = useCopyText();
 
@@ -31,39 +31,39 @@ function HtmlBeautifier() {
 	const outputCodeEditorRef = useRef<monaco.editor.IStandaloneCodeEditor>(null);
 
 	const options = useRef<IOptionTypes>({
-		html: "",
-		formattedHtml: "",
+		js: "",
+		formattedJs: "",
 		lastUsed: "format",
 		tabSize: 2,
 	});
 
-	const generateSample = () => {
-		options.current.html = htmlSample;
-		codeEditorRef.current?.setValue(options.current.html);
+	const generateSample = async () => {
+		options.current.js = jsSample;
+		codeEditorRef.current?.setValue(options.current.js);
 	};
 
 	const format = (trigger: boolean) => {
 		options.current.lastUsed = "format";
-		const html = trigger ? options.current.html : options.current.formattedHtml;
-		const formattedHtml = beautifyHtml(html, {
+		const js = trigger ? options.current.js : options.current.formattedJs;
+		const formattedJs = beautifyJs(js, {
 			indentSize: options.current.tabSize,
 		});
-		outputCodeEditorRef.current?.setValue(formattedHtml);
+		outputCodeEditorRef.current?.setValue(formattedJs);
 		if (trigger) dispatch(success());
 	};
 
-	const minify = (trigger: boolean) => {
+	const minify = async (trigger: boolean) => {
 		options.current.lastUsed = "minify";
-		const html = trigger ? options.current.html : options.current.formattedHtml;
-		const minifiedHtml = minifyHtml(html);
-		outputCodeEditorRef.current?.setValue(minifiedHtml);
+		const js = trigger ? options.current.js : options.current.formattedJs;
+		const minifiedJs = await minifyJs(js);
+		outputCodeEditorRef.current?.setValue(minifiedJs);
 		if (trigger) dispatch(success());
 	};
 
 	const copyOutput = () => {
-		const formattedHtml = options.current.formattedHtml;
-		if (formattedHtml.trim().length === 0) return;
-		copyText(formattedHtml);
+		const formattedJs = options.current.formattedJs;
+		if (formattedJs.trim().length === 0) return;
+		copyText(formattedJs);
 	};
 
 	const onTabSizeChange = (tabSize: number) => {
@@ -99,10 +99,10 @@ function HtmlBeautifier() {
 			InputView={
 				<CodeEditor
 					ref={codeEditorRef}
-					code={options.current.html}
-					language="html"
-					onChange={(html) => {
-						options.current.html = html;
+					code={options.current.js}
+					language="javascript"
+					onChange={(js) => {
+						options.current.js = js;
 					}}
 				/>
 			}
@@ -124,10 +124,10 @@ function HtmlBeautifier() {
 			OutputView={
 				<CodeEditor
 					ref={outputCodeEditorRef}
-					code={options.current.formattedHtml}
-					language="html"
-					onChange={(html) => {
-						options.current.formattedHtml = html;
+					code={options.current.formattedJs}
+					language="javascript"
+					onChange={(js) => {
+						options.current.formattedJs = js;
 					}}
 				/>
 			}

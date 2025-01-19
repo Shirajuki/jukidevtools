@@ -45,36 +45,25 @@ export const TOOL_ROUTES: IToolRouteGroup[] = [
 					"Clean and beautify HTML code, making it easy to read and maintain. Boost readability, spot errors faster with perfectly formatted HTML.",
 			},
 			{
-				label: "CSS Formatter",
-				path: "/css-formatter",
+				label: "CSS Beautifier",
+				path: "/css-beautifier",
 				icon: MenuUnfoldOutlined,
-				alias: ["CSS Beautifier", "CSS Beautify"],
+				alias: ["CSS Beautify", "CSS Formatter", "CSS Minify", "CSS Minifier"],
 				description:
 					"Untidy CSS got you down? CSS Formatter beautifies & organizes your CSS code for readability & maintainability.",
 			},
 			{
-				label: "CSS Minifier",
-				path: "/css-minifier",
-				icon: CompressOutlined,
-				alias: ["CSS Minify", "CSS Uglifier", "CSS Uglify"],
-				description:
-					"Supercharge website speed with CSS Minifier! Minify CSS code to optimize file size, boost loading times & improve SEO.",
-			},
-			{
-				label: "JavaScript Formatter",
-				path: "/javascript-formatter",
+				label: "JavaScript Beautifier",
+				path: "/javascript-beautifier",
 				icon: MenuUnfoldOutlined,
-				alias: ["JavaScript JS Formatter", "JavaScript JS Beautifier", "JavaScript JS Beautify"],
+				alias: [
+					"JavaScript JS Beautify",
+					"JavaScript JS Formatter",
+					"JavaScript JS Minify",
+					"JavaScript JS Minifier",
+				],
 				description:
 					"Unmess your JavaScript code. Clean & organize your JS for better readability & debugging. Boost developer productivity!",
-			},
-			{
-				label: "JavaScript Minifier",
-				path: "/javascript-minifier",
-				icon: CompressOutlined,
-				alias: ["JavaScript JS Minify", "JavaScript JS Uglifier", "JavaScript JS Uglify"],
-				description:
-					"Supercharge your site speed. JavaScript Minifier shrinks & optimizes JS files for blazing-fast load times & improved SEO.",
 			},
 			{
 				label: "HTML Viewer",
@@ -129,17 +118,9 @@ export const TOOL_ROUTES: IToolRouteGroup[] = [
 				label: "Random String Generator",
 				path: "/random-string-generator",
 				icon: FieldStringOutlined,
-				alias: ["Random Text Generator"],
+				alias: ["Random Text Generator", "UUID Generator", "Password Generator"],
 				description:
 					"Generate secure random strings at your fingertips. Random String Generator creates unique strings for passwords, tokens, and more.",
-			},
-			{
-				label: "UUID Generator",
-				path: "/uuid-generator",
-				icon: FieldNumberOutlined,
-				alias: ["UUID Randomizer"],
-				description:
-					"Need a unique identifier? Generate strong, random UUIDs with True Devtools for free. Easy to use and guaranteed uniqueness.",
 			},
 			{
 				label: "Text Case Converter",

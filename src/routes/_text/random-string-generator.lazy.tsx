@@ -1,4 +1,4 @@
-import { Form, InputNumber, Button, type FormProps, Checkbox } from "antd";
+import { Form, InputNumber, Button, type FormProps, Checkbox, Space } from "antd";
 import { ArrowRightOutlined, CopyOutlined } from "@ant-design/icons";
 import { useRef, useState } from "react";
 import randomString from "../../utils/randomString.utils";
@@ -8,7 +8,10 @@ import useCopyText from "../../hooks/useCopyText.hooks";
 import InputOutputLayout from "../../layouts/InputOutputLayout/InputOutputLayout.component";
 import CodeEditor from "../../components/CodeEditor.component";
 import { createLazyFileRoute } from "@tanstack/react-router";
+import hash, { type IHashAlgorithm } from "../../utils/hash.utils";
+import generateUuid from "../../utils/generateUuid.utils";
 
+// TODO: https://1password.com/password-generator
 export const Route = createLazyFileRoute("/_text/random-string-generator")({
 	component: RandomStringGenerator,
 });
@@ -19,20 +22,25 @@ interface IOptionTypes {
 	allowUppercase: boolean;
 	allowLowercase: boolean;
 	allowDigits: boolean;
+	allowSpecialCharacters: boolean;
+	md5?: boolean;
+	sha1?: boolean;
+	sha256?: boolean;
 }
 
 function RandomStringGenerator() {
 	const dispatch = useAppDispatch();
 	const copyText = useCopyText();
-
 	const [form] = Form.useForm();
 	const options = useRef<IOptionTypes>({
 		quantity: 5,
-		length: 10,
+		length: 20,
 		allowDigits: true,
 		allowUppercase: true,
 		allowLowercase: true,
+		allowSpecialCharacters: false,
 	});
+	const [generatedTexts, setGeneratedTexts] = useState<string[]>([]);
 
 	const onValuesChange: FormProps<IOptionTypes>["onValuesChange"] = (values: IOptionTypes) => {
 		options.current = {
@@ -40,9 +48,6 @@ function RandomStringGenerator() {
 			...values,
 		};
 	};
-
-	const [generatedTexts, setGeneratedTexts] = useState<string[]>([]);
-
 	const generate = async () => {
 		try {
 			await form.validateFields();
@@ -54,7 +59,8 @@ function RandomStringGenerator() {
 		if (
 			!options.current.allowUppercase &&
 			!options.current.allowLowercase &&
-			!options.current.allowDigits
+			!options.current.allowDigits &&
+			!options.current.allowSpecialCharacters
 		) {
 			dispatch(error("At least 1 character set needs to be selected."));
 			return;
@@ -68,13 +74,27 @@ function RandomStringGenerator() {
 					allowUppercase: options.current.allowUppercase,
 					allowLowercase: options.current.allowLowercase,
 					allowDigits: options.current.allowDigits,
+					allowSpecialCharacters: options.current.allowSpecialCharacters,
 				}),
 			);
 		}
-
+		const hashes = [
+			options.current.md5 && "md5",
+			options.current.sha1 && "sha1",
+			options.current.sha256 && "sha256",
+		].filter(Boolean) as IHashAlgorithm[];
+		for (let i = 0; i < hashes.length; i++) {
+			const hashType = hashes[i];
+			for (let j = 0; j < generatedTexts.length; j++) {
+				generatedTexts[j] = hash(generatedTexts[j], hashType);
+			}
+		}
 		setGeneratedTexts(generatedTexts);
 	};
-
+	const generateUUID = () => {
+		const uuids = generateUuid(options.current.quantity);
+		setGeneratedTexts(uuids);
+	};
 	const copyOutput = () => {
 		copyText(generatedTexts.join("\n"));
 	};
@@ -82,9 +102,14 @@ function RandomStringGenerator() {
 	return (
 		<InputOutputLayout
 			InputToolbar={
-				<Button type="primary" icon={<ArrowRightOutlined />} size="large" onClick={generate}>
-					Generate
-				</Button>
+				<Space>
+					<Button type="primary" icon={<ArrowRightOutlined />} size="large" onClick={generate}>
+						Generate
+					</Button>
+					<Button type="primary" icon={<ArrowRightOutlined />} size="large" onClick={generateUUID}>
+						UUID
+					</Button>
+				</Space>
 			}
 			InputView={
 				<Form
@@ -112,10 +137,13 @@ function RandomStringGenerator() {
 						/>
 					</Form.Item>
 
+					<hr />
+
 					<Form.Item<IOptionTypes>
 						label="How long for each string?"
 						name="length"
 						rules={[{ required: true }]}
+						className="mt-2"
 					>
 						<InputNumber
 							min={1}
@@ -137,16 +165,32 @@ function RandomStringGenerator() {
 					<Form.Item<IOptionTypes> name="allowDigits" valuePropName="checked" className="-mt-4">
 						<Checkbox>Allow numeric digits (0-9)</Checkbox>
 					</Form.Item>
+
+					<Form.Item<IOptionTypes>
+						name="allowSpecialCharacters"
+						valuePropName="checked"
+						className="-mt-4"
+					>
+						<Checkbox>Allow special characters</Checkbox>
+					</Form.Item>
+
+					<hr className="-mt-3" />
+
+					<Form.Item<IOptionTypes> name="md5" valuePropName="checked" className="mt-3">
+						<Checkbox>MD5</Checkbox>
+					</Form.Item>
+					<Form.Item<IOptionTypes> name="sha1" valuePropName="checked" className="-mt-4">
+						<Checkbox>SHA1</Checkbox>
+					</Form.Item>
+					<Form.Item<IOptionTypes> name="sha256" valuePropName="checked" className="-mt-4">
+						<Checkbox>SHA256</Checkbox>
+					</Form.Item>
 				</Form>
 			}
 			OutputToolbar={
-				generatedTexts.length === 0 ? (
-					<></>
-				) : (
-					<Button icon={<CopyOutlined />} onClick={copyOutput}>
-						Copy
-					</Button>
-				)
+				<Button icon={<CopyOutlined />} onClick={copyOutput}>
+					Copy
+				</Button>
 			}
 			OutputView={
 				<CodeEditor

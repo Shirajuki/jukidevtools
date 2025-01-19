@@ -21,18 +21,16 @@ const WebSqlFormatterLazyImport = createFileRoute('/_web/sql-formatter')()
 const WebJavascriptMinifierLazyImport = createFileRoute(
   '/_web/javascript-minifier',
 )()
-const WebJavascriptFormatterLazyImport = createFileRoute(
-  '/_web/javascript-formatter',
+const WebJavascriptBeautifierLazyImport = createFileRoute(
+  '/_web/javascript-beautifier',
 )()
 const WebHtmlViewerLazyImport = createFileRoute('/_web/html-viewer')()
 const WebHtmlBeautifierLazyImport = createFileRoute('/_web/html-beautifier')()
-const WebCssMinifierLazyImport = createFileRoute('/_web/css-minifier')()
-const WebCssFormatterLazyImport = createFileRoute('/_web/css-formatter')()
+const WebCssBeautifierLazyImport = createFileRoute('/_web/css-beautifier')()
 const UtilitiesRegexTesterLazyImport = createFileRoute(
   '/_utilities/regex-tester',
 )()
 const TextWordCounterLazyImport = createFileRoute('/_text/word-counter')()
-const TextUuidGeneratorLazyImport = createFileRoute('/_text/uuid-generator')()
 const TextTextDiffCheckerLazyImport = createFileRoute(
   '/_text/text-diff-checker',
 )()
@@ -112,15 +110,14 @@ const WebJavascriptMinifierLazyRoute = WebJavascriptMinifierLazyImport.update({
   import('./routes/_web/javascript-minifier.lazy').then((d) => d.Route),
 )
 
-const WebJavascriptFormatterLazyRoute = WebJavascriptFormatterLazyImport.update(
-  {
-    id: '/_web/javascript-formatter',
-    path: '/javascript-formatter',
+const WebJavascriptBeautifierLazyRoute =
+  WebJavascriptBeautifierLazyImport.update({
+    id: '/_web/javascript-beautifier',
+    path: '/javascript-beautifier',
     getParentRoute: () => rootRoute,
-  } as any,
-).lazy(() =>
-  import('./routes/_web/javascript-formatter.lazy').then((d) => d.Route),
-)
+  } as any).lazy(() =>
+    import('./routes/_web/javascript-beautifier.lazy').then((d) => d.Route),
+  )
 
 const WebHtmlViewerLazyRoute = WebHtmlViewerLazyImport.update({
   id: '/_web/html-viewer',
@@ -138,20 +135,12 @@ const WebHtmlBeautifierLazyRoute = WebHtmlBeautifierLazyImport.update({
   import('./routes/_web/html-beautifier.lazy').then((d) => d.Route),
 )
 
-const WebCssMinifierLazyRoute = WebCssMinifierLazyImport.update({
-  id: '/_web/css-minifier',
-  path: '/css-minifier',
+const WebCssBeautifierLazyRoute = WebCssBeautifierLazyImport.update({
+  id: '/_web/css-beautifier',
+  path: '/css-beautifier',
   getParentRoute: () => rootRoute,
 } as any).lazy(() =>
-  import('./routes/_web/css-minifier.lazy').then((d) => d.Route),
-)
-
-const WebCssFormatterLazyRoute = WebCssFormatterLazyImport.update({
-  id: '/_web/css-formatter',
-  path: '/css-formatter',
-  getParentRoute: () => rootRoute,
-} as any).lazy(() =>
-  import('./routes/_web/css-formatter.lazy').then((d) => d.Route),
+  import('./routes/_web/css-beautifier.lazy').then((d) => d.Route),
 )
 
 const UtilitiesRegexTesterLazyRoute = UtilitiesRegexTesterLazyImport.update({
@@ -168,14 +157,6 @@ const TextWordCounterLazyRoute = TextWordCounterLazyImport.update({
   getParentRoute: () => rootRoute,
 } as any).lazy(() =>
   import('./routes/_text/word-counter.lazy').then((d) => d.Route),
-)
-
-const TextUuidGeneratorLazyRoute = TextUuidGeneratorLazyImport.update({
-  id: '/_text/uuid-generator',
-  path: '/uuid-generator',
-  getParentRoute: () => rootRoute,
-} as any).lazy(() =>
-  import('./routes/_text/uuid-generator.lazy').then((d) => d.Route),
 )
 
 const TextTextDiffCheckerLazyRoute = TextTextDiffCheckerLazyImport.update({
@@ -515,13 +496,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TextTextDiffCheckerLazyImport
       parentRoute: typeof rootRoute
     }
-    '/_text/uuid-generator': {
-      id: '/_text/uuid-generator'
-      path: '/uuid-generator'
-      fullPath: '/uuid-generator'
-      preLoaderRoute: typeof TextUuidGeneratorLazyImport
-      parentRoute: typeof rootRoute
-    }
     '/_text/word-counter': {
       id: '/_text/word-counter'
       path: '/word-counter'
@@ -536,18 +510,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UtilitiesRegexTesterLazyImport
       parentRoute: typeof rootRoute
     }
-    '/_web/css-formatter': {
-      id: '/_web/css-formatter'
-      path: '/css-formatter'
-      fullPath: '/css-formatter'
-      preLoaderRoute: typeof WebCssFormatterLazyImport
-      parentRoute: typeof rootRoute
-    }
-    '/_web/css-minifier': {
-      id: '/_web/css-minifier'
-      path: '/css-minifier'
-      fullPath: '/css-minifier'
-      preLoaderRoute: typeof WebCssMinifierLazyImport
+    '/_web/css-beautifier': {
+      id: '/_web/css-beautifier'
+      path: '/css-beautifier'
+      fullPath: '/css-beautifier'
+      preLoaderRoute: typeof WebCssBeautifierLazyImport
       parentRoute: typeof rootRoute
     }
     '/_web/html-beautifier': {
@@ -564,11 +531,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WebHtmlViewerLazyImport
       parentRoute: typeof rootRoute
     }
-    '/_web/javascript-formatter': {
-      id: '/_web/javascript-formatter'
-      path: '/javascript-formatter'
-      fullPath: '/javascript-formatter'
-      preLoaderRoute: typeof WebJavascriptFormatterLazyImport
+    '/_web/javascript-beautifier': {
+      id: '/_web/javascript-beautifier'
+      path: '/javascript-beautifier'
+      fullPath: '/javascript-beautifier'
+      preLoaderRoute: typeof WebJavascriptBeautifierLazyImport
       parentRoute: typeof rootRoute
     }
     '/_web/javascript-minifier': {
@@ -612,14 +579,12 @@ export interface FileRoutesByFullPath {
   '/random-string-generator': typeof TextRandomStringGeneratorLazyRoute
   '/text-case-converter': typeof TextTextCaseConverterLazyRoute
   '/text-diff-checker': typeof TextTextDiffCheckerLazyRoute
-  '/uuid-generator': typeof TextUuidGeneratorLazyRoute
   '/word-counter': typeof TextWordCounterLazyRoute
   '/regex-tester': typeof UtilitiesRegexTesterLazyRoute
-  '/css-formatter': typeof WebCssFormatterLazyRoute
-  '/css-minifier': typeof WebCssMinifierLazyRoute
+  '/css-beautifier': typeof WebCssBeautifierLazyRoute
   '/html-beautifier': typeof WebHtmlBeautifierLazyRoute
   '/html-viewer': typeof WebHtmlViewerLazyRoute
-  '/javascript-formatter': typeof WebJavascriptFormatterLazyRoute
+  '/javascript-beautifier': typeof WebJavascriptBeautifierLazyRoute
   '/javascript-minifier': typeof WebJavascriptMinifierLazyRoute
   '/sql-formatter': typeof WebSqlFormatterLazyRoute
 }
@@ -646,14 +611,12 @@ export interface FileRoutesByTo {
   '/random-string-generator': typeof TextRandomStringGeneratorLazyRoute
   '/text-case-converter': typeof TextTextCaseConverterLazyRoute
   '/text-diff-checker': typeof TextTextDiffCheckerLazyRoute
-  '/uuid-generator': typeof TextUuidGeneratorLazyRoute
   '/word-counter': typeof TextWordCounterLazyRoute
   '/regex-tester': typeof UtilitiesRegexTesterLazyRoute
-  '/css-formatter': typeof WebCssFormatterLazyRoute
-  '/css-minifier': typeof WebCssMinifierLazyRoute
+  '/css-beautifier': typeof WebCssBeautifierLazyRoute
   '/html-beautifier': typeof WebHtmlBeautifierLazyRoute
   '/html-viewer': typeof WebHtmlViewerLazyRoute
-  '/javascript-formatter': typeof WebJavascriptFormatterLazyRoute
+  '/javascript-beautifier': typeof WebJavascriptBeautifierLazyRoute
   '/javascript-minifier': typeof WebJavascriptMinifierLazyRoute
   '/sql-formatter': typeof WebSqlFormatterLazyRoute
 }
@@ -681,14 +644,12 @@ export interface FileRoutesById {
   '/_text/random-string-generator': typeof TextRandomStringGeneratorLazyRoute
   '/_text/text-case-converter': typeof TextTextCaseConverterLazyRoute
   '/_text/text-diff-checker': typeof TextTextDiffCheckerLazyRoute
-  '/_text/uuid-generator': typeof TextUuidGeneratorLazyRoute
   '/_text/word-counter': typeof TextWordCounterLazyRoute
   '/_utilities/regex-tester': typeof UtilitiesRegexTesterLazyRoute
-  '/_web/css-formatter': typeof WebCssFormatterLazyRoute
-  '/_web/css-minifier': typeof WebCssMinifierLazyRoute
+  '/_web/css-beautifier': typeof WebCssBeautifierLazyRoute
   '/_web/html-beautifier': typeof WebHtmlBeautifierLazyRoute
   '/_web/html-viewer': typeof WebHtmlViewerLazyRoute
-  '/_web/javascript-formatter': typeof WebJavascriptFormatterLazyRoute
+  '/_web/javascript-beautifier': typeof WebJavascriptBeautifierLazyRoute
   '/_web/javascript-minifier': typeof WebJavascriptMinifierLazyRoute
   '/_web/sql-formatter': typeof WebSqlFormatterLazyRoute
 }
@@ -717,14 +678,12 @@ export interface FileRouteTypes {
     | '/random-string-generator'
     | '/text-case-converter'
     | '/text-diff-checker'
-    | '/uuid-generator'
     | '/word-counter'
     | '/regex-tester'
-    | '/css-formatter'
-    | '/css-minifier'
+    | '/css-beautifier'
     | '/html-beautifier'
     | '/html-viewer'
-    | '/javascript-formatter'
+    | '/javascript-beautifier'
     | '/javascript-minifier'
     | '/sql-formatter'
   fileRoutesByTo: FileRoutesByTo
@@ -750,14 +709,12 @@ export interface FileRouteTypes {
     | '/random-string-generator'
     | '/text-case-converter'
     | '/text-diff-checker'
-    | '/uuid-generator'
     | '/word-counter'
     | '/regex-tester'
-    | '/css-formatter'
-    | '/css-minifier'
+    | '/css-beautifier'
     | '/html-beautifier'
     | '/html-viewer'
-    | '/javascript-formatter'
+    | '/javascript-beautifier'
     | '/javascript-minifier'
     | '/sql-formatter'
   id:
@@ -783,14 +740,12 @@ export interface FileRouteTypes {
     | '/_text/random-string-generator'
     | '/_text/text-case-converter'
     | '/_text/text-diff-checker'
-    | '/_text/uuid-generator'
     | '/_text/word-counter'
     | '/_utilities/regex-tester'
-    | '/_web/css-formatter'
-    | '/_web/css-minifier'
+    | '/_web/css-beautifier'
     | '/_web/html-beautifier'
     | '/_web/html-viewer'
-    | '/_web/javascript-formatter'
+    | '/_web/javascript-beautifier'
     | '/_web/javascript-minifier'
     | '/_web/sql-formatter'
   fileRoutesById: FileRoutesById
@@ -818,14 +773,12 @@ export interface RootRouteChildren {
   TextRandomStringGeneratorLazyRoute: typeof TextRandomStringGeneratorLazyRoute
   TextTextCaseConverterLazyRoute: typeof TextTextCaseConverterLazyRoute
   TextTextDiffCheckerLazyRoute: typeof TextTextDiffCheckerLazyRoute
-  TextUuidGeneratorLazyRoute: typeof TextUuidGeneratorLazyRoute
   TextWordCounterLazyRoute: typeof TextWordCounterLazyRoute
   UtilitiesRegexTesterLazyRoute: typeof UtilitiesRegexTesterLazyRoute
-  WebCssFormatterLazyRoute: typeof WebCssFormatterLazyRoute
-  WebCssMinifierLazyRoute: typeof WebCssMinifierLazyRoute
+  WebCssBeautifierLazyRoute: typeof WebCssBeautifierLazyRoute
   WebHtmlBeautifierLazyRoute: typeof WebHtmlBeautifierLazyRoute
   WebHtmlViewerLazyRoute: typeof WebHtmlViewerLazyRoute
-  WebJavascriptFormatterLazyRoute: typeof WebJavascriptFormatterLazyRoute
+  WebJavascriptBeautifierLazyRoute: typeof WebJavascriptBeautifierLazyRoute
   WebJavascriptMinifierLazyRoute: typeof WebJavascriptMinifierLazyRoute
   WebSqlFormatterLazyRoute: typeof WebSqlFormatterLazyRoute
 }
@@ -856,14 +809,12 @@ const rootRouteChildren: RootRouteChildren = {
   TextRandomStringGeneratorLazyRoute: TextRandomStringGeneratorLazyRoute,
   TextTextCaseConverterLazyRoute: TextTextCaseConverterLazyRoute,
   TextTextDiffCheckerLazyRoute: TextTextDiffCheckerLazyRoute,
-  TextUuidGeneratorLazyRoute: TextUuidGeneratorLazyRoute,
   TextWordCounterLazyRoute: TextWordCounterLazyRoute,
   UtilitiesRegexTesterLazyRoute: UtilitiesRegexTesterLazyRoute,
-  WebCssFormatterLazyRoute: WebCssFormatterLazyRoute,
-  WebCssMinifierLazyRoute: WebCssMinifierLazyRoute,
+  WebCssBeautifierLazyRoute: WebCssBeautifierLazyRoute,
   WebHtmlBeautifierLazyRoute: WebHtmlBeautifierLazyRoute,
   WebHtmlViewerLazyRoute: WebHtmlViewerLazyRoute,
-  WebJavascriptFormatterLazyRoute: WebJavascriptFormatterLazyRoute,
+  WebJavascriptBeautifierLazyRoute: WebJavascriptBeautifierLazyRoute,
   WebJavascriptMinifierLazyRoute: WebJavascriptMinifierLazyRoute,
   WebSqlFormatterLazyRoute: WebSqlFormatterLazyRoute,
 }
@@ -899,14 +850,12 @@ export const routeTree = rootRoute
         "/_text/random-string-generator",
         "/_text/text-case-converter",
         "/_text/text-diff-checker",
-        "/_text/uuid-generator",
         "/_text/word-counter",
         "/_utilities/regex-tester",
-        "/_web/css-formatter",
-        "/_web/css-minifier",
+        "/_web/css-beautifier",
         "/_web/html-beautifier",
         "/_web/html-viewer",
-        "/_web/javascript-formatter",
+        "/_web/javascript-beautifier",
         "/_web/javascript-minifier",
         "/_web/sql-formatter"
       ]
@@ -974,20 +923,14 @@ export const routeTree = rootRoute
     "/_text/text-diff-checker": {
       "filePath": "_text/text-diff-checker.lazy.tsx"
     },
-    "/_text/uuid-generator": {
-      "filePath": "_text/uuid-generator.lazy.tsx"
-    },
     "/_text/word-counter": {
       "filePath": "_text/word-counter.lazy.tsx"
     },
     "/_utilities/regex-tester": {
       "filePath": "_utilities/regex-tester.lazy.tsx"
     },
-    "/_web/css-formatter": {
-      "filePath": "_web/css-formatter.lazy.tsx"
-    },
-    "/_web/css-minifier": {
-      "filePath": "_web/css-minifier.lazy.tsx"
+    "/_web/css-beautifier": {
+      "filePath": "_web/css-beautifier.lazy.tsx"
     },
     "/_web/html-beautifier": {
       "filePath": "_web/html-beautifier.lazy.tsx"
@@ -995,8 +938,8 @@ export const routeTree = rootRoute
     "/_web/html-viewer": {
       "filePath": "_web/html-viewer.lazy.tsx"
     },
-    "/_web/javascript-formatter": {
-      "filePath": "_web/javascript-formatter.lazy.tsx"
+    "/_web/javascript-beautifier": {
+      "filePath": "_web/javascript-beautifier.lazy.tsx"
     },
     "/_web/javascript-minifier": {
       "filePath": "_web/javascript-minifier.lazy.tsx"

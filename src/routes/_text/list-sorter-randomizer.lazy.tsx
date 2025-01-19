@@ -13,7 +13,7 @@ export const Route = createLazyFileRoute("/_text/list-sorter-randomizer")({
 	component: ListSorterRandomizer,
 });
 
-type IOrderType = "ascending" | "descending" | "reversed" | "random";
+type IOrderType = "none" | "ascending" | "descending" | "reversed" | "random";
 
 export interface IOptionTypes {
 	text: string;
@@ -28,7 +28,7 @@ function ListSorterRandomizer() {
 
 	const options = useRef<IOptionTypes>({
 		text: "",
-		order: "ascending",
+		order: "none",
 	});
 
 	const generateSample = () => {
@@ -75,10 +75,20 @@ function ListSorterRandomizer() {
 				lines = shuffleArray(lines);
 				break;
 			}
+
+			default: {
+				break;
+			}
 		}
 
 		convertedText.current = lines.join("\n");
 		outputCodeEditorRef.current?.setValue(convertedText.current);
+	};
+
+	const splitString = () => {
+		const lines = options.current.text.split(",").filter((line) => line);
+		const splittedText = lines.map((line) => line).join("\n");
+		onTextChange(splittedText);
 	};
 
 	return (
@@ -87,6 +97,9 @@ function ListSorterRandomizer() {
 				<Space>
 					<Button size="large" onClick={generateSample}>
 						Sample
+					</Button>
+					<Button size="large" onClick={splitString}>
+						Split
 					</Button>
 				</Space>
 			}
@@ -103,6 +116,7 @@ function ListSorterRandomizer() {
 					<Select
 						defaultValue={options.current.order}
 						options={[
+							{ value: "none", label: <>None</> },
 							{ value: "ascending", label: <>Ascending</> },
 							{ value: "descending", label: <>Descending</> },
 							{ value: "reversed", label: <>Reversed</> },
@@ -116,12 +130,7 @@ function ListSorterRandomizer() {
 				</Space>
 			}
 			OutputView={
-				<CodeEditor
-					ref={outputCodeEditorRef}
-					code={convertedText.current}
-					language="text"
-					readonly
-				/>
+				<CodeEditor ref={outputCodeEditorRef} code={convertedText.current} language="text" />
 			}
 		/>
 	);

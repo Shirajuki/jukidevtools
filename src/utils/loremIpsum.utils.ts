@@ -1,59 +1,61 @@
-import { loremIpsum as generateLoremIpsum } from "lorem-ipsum"
+import { loremIpsum as generateLoremIpsum } from "lorem-ipsum";
 
-const LOREM_IPSUM_SENTENCE = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'
-const LOREM_IPSUM_SENTENCE_PLAIN = 'lorem ipsum dolor sit amet consectetur adipiscing elit'
-const LOREM_IPSUM_SENTENCE_WORDS = LOREM_IPSUM_SENTENCE_PLAIN.split(' ')
+const LOREM_IPSUM_SENTENCE = "Lorem ipsum dolor sit amet, consectetur adipiscing elit";
+const LOREM_IPSUM_SENTENCE_PLAIN = "lorem ipsum dolor sit amet consectetur adipiscing elit";
+const LOREM_IPSUM_SENTENCE_WORDS = LOREM_IPSUM_SENTENCE_PLAIN.split(" ");
 
 export interface ILoremIpsumOptions {
-  length: number,
-  unit: 'paragraphs' | 'sentences' | 'words',
-	startWithLoremIpsum: boolean
+	length: number;
+	unit: "paragraphs" | "sentences" | "words";
+	startWithLoremIpsum: boolean;
 }
 
 const loremIpsum = (options: ILoremIpsumOptions): string => {
-	let generatedText = ''
+	let generatedText = "";
 
 	if (options.startWithLoremIpsum) {
 		switch (options.unit) {
-			case 'paragraphs': {
+			case "paragraphs": {
 				const newText = generateLoremIpsum({
 					count: options.length,
-					units: options.unit
-				})
-				generatedText = `${LOREM_IPSUM_SENTENCE}. ${newText}`
-				break
+					units: options.unit,
+				});
+				generatedText = `${LOREM_IPSUM_SENTENCE}. ${newText}`;
+				break;
 			}
 
-			case 'sentences': {
+			case "sentences": {
 				const newText = generateLoremIpsum({
 					count: options.length - 1,
-					units: options.unit
-				})
-				generatedText = `${LOREM_IPSUM_SENTENCE}. ${newText}`
-				break
+					units: options.unit,
+				});
+				generatedText = `${LOREM_IPSUM_SENTENCE}. ${newText}`;
+				break;
 			}
 
-			case 'words': {
+			case "words": {
 				if (options.length <= LOREM_IPSUM_SENTENCE_WORDS.length) {
-					generatedText = LOREM_IPSUM_SENTENCE_WORDS.slice(0, options.length).join(' ')
+					generatedText = LOREM_IPSUM_SENTENCE_WORDS.slice(0, options.length).join(" ");
+					generatedText = generatedText.charAt(0).toUpperCase() + generatedText.slice(1);
 				} else {
 					const newText = generateLoremIpsum({
 						count: options.length - LOREM_IPSUM_SENTENCE_WORDS.length,
-						units: options.unit
-					})
-					generatedText = `${LOREM_IPSUM_SENTENCE_PLAIN} ${newText}`
-					break
+						units: options.unit,
+					});
+					generatedText = `${LOREM_IPSUM_SENTENCE_PLAIN} ${newText}`;
+					generatedText = generatedText.charAt(0).toUpperCase() + generatedText.slice(1);
+					break;
 				}
 			}
 		}
 	} else {
 		generatedText = generateLoremIpsum({
 			count: options.length,
-			units: options.unit
-		})
+			units: options.unit,
+		});
 	}
 
-	return generatedText
-}
+	return generatedText;
+};
 
-export default loremIpsum
+export default loremIpsum;

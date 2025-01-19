@@ -1,22 +1,9 @@
-import { v1 as uuidv1, v3 as uuidv3, v4 as uuidv4, v5 as uuidv5 } from "uuid";
-import { IOptionTypes } from "../routes/_text/uuid-generator.lazy";
+import { v4 as uuidv4 } from "uuid";
 
-export type IUuidVersion = "1" | "3" | "4" | "5";
+export type IUuidVersion = "4";
 
-const generateUuid = (options: IOptionTypes): string[] => {
-	switch (options.version) {
-		case "1":
-			return [...Array(options.quantity)].map(() => uuidv1());
-
-		case "3":
-			return [uuidv3(options.name!, options.namespace!)];
-
-		case "4":
-			return [...Array(options.quantity)].map(() => uuidv4());
-
-		case "5":
-			return [uuidv5(options.name!, options.namespace!)];
-	}
+const generateUuid = (quantity: number): string[] => {
+	return [...Array(quantity)].map(() => uuidv4());
 };
 
 export default generateUuid;
