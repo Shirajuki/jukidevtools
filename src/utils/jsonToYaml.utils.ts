@@ -1,18 +1,17 @@
-import { parse, stringify } from 'yaml'
+import { parse, stringify } from "yaml";
 
 interface IJsonToYamlOptions {
-	json: string,
-	indentSize: number
+	json: string;
+	indentSize: number;
 }
 
 const jsonToYaml = (options: IJsonToYamlOptions): string => {
-	const yamlObject = parse(options.json)
-
+	const yamlObject = parse(options.json);
 	const yaml = stringify(yamlObject, {
-		indent: options.indentSize
-	})
+		indent: options.indentSize,
+	});
 
-	return yaml
-}
+	return yaml;
+};
 
-export default jsonToYaml
+export default jsonToYaml;

@@ -1,11 +1,9 @@
 import type { FC } from "react";
 import {
 	MenuUnfoldOutlined,
-	CompressOutlined,
 	EyeOutlined,
 	RetweetOutlined,
 	ConsoleSqlOutlined,
-	FieldNumberOutlined,
 	FileImageOutlined,
 	PictureOutlined,
 	LockOutlined,
@@ -84,6 +82,31 @@ export const TOOL_ROUTES: IToolRouteGroup[] = [
 		],
 	},
 	{
+		label: "JSON tools",
+		routes: [
+			{
+				label: "JSON Beautifier",
+				path: "/json-beautifier",
+				icon: MenuUnfoldOutlined,
+				alias: ["JSON Formatter", "JSON Beautify", "JSON Minify", "JSON Minifier"],
+				description:
+					"Beautify your JSON. JSON Formatter makes your JSON code readable & checks for errors, boosting development efficiency.",
+			},
+			{
+				label: "JSON Conversions",
+				path: "/json-conversions",
+				alias: [
+					"JSON to and from XML Converter",
+					"JSON to and from YAML Converter",
+					"JSON to and from CSV Converter",
+				],
+				icon: RetweetOutlined,
+				description:
+					"Effortlessly convert JSON to YAML. JSON to YAML Converter simplifies data migration between formats, boosting your development workflow.",
+			},
+		],
+	},
+	{
 		label: "Text tools",
 		routes: [
 			{
@@ -137,55 +160,6 @@ export const TOOL_ROUTES: IToolRouteGroup[] = [
 				alias: ["Text String List Line Sorter / Randomizer"],
 				description:
 					"Effortlessly sort & randomize list. Sort a list of text lines in ascending, descending, reversed, or random order.",
-			},
-		],
-	},
-	{
-		label: "JSON tools",
-		routes: [
-			{
-				label: "JSON Formatter",
-				path: "/json-formatter",
-				icon: MenuUnfoldOutlined,
-				alias: ["JSON Beautifier", "JSON Beautify"],
-				description:
-					"Beautify your JSON. JSON Formatter makes your JSON code readable & checks for errors, boosting development efficiency.",
-			},
-			{
-				label: "JSON Minifier",
-				path: "/json-minifier",
-				icon: CompressOutlined,
-				alias: ["JSON Minify", "JSON Uglifier", "JSON Uglify"],
-				description:
-					"Instantly minify JSON for flawless data exchange. JSON Minifier reduces JSON file size by trimming all whitespaces for faster transmission.",
-			},
-			{
-				label: "JSON to XML Converter",
-				path: "/json-to-xml-converter",
-				icon: RetweetOutlined,
-				description:
-					"Effortlessly convert JSON to XML: JSON to XML Converter ensures seamless data exchange between formats, boosting your development workflow.",
-			},
-			{
-				label: "XML to JSON Converter",
-				path: "/xml-to-json-converter",
-				icon: RetweetOutlined,
-				description:
-					"Effortlessly convert XML to JSON. True Devtools' free online converter transforms your data with ease. Get clean, human-readable JSON in seconds!",
-			},
-			{
-				label: "JSON to YAML Converter",
-				path: "/json-to-yaml-converter",
-				icon: RetweetOutlined,
-				description:
-					"Effortlessly convert JSON to YAML. JSON to YAML Converter simplifies data migration between formats, boosting your development workflow.",
-			},
-			{
-				label: "YAML to JSON Converter",
-				path: "/yaml-to-json-converter",
-				icon: RetweetOutlined,
-				description:
-					"Effortlessly convert YAML to JSON. YAML to JSON Converter ensures seamless data exchange between formats, boosting your development workflow.",
 			},
 		],
 	},

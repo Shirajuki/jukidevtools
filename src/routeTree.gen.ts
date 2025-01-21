@@ -13,6 +13,7 @@ import { createFileRoute } from '@tanstack/react-router'
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as JsonJsonConversionsImport } from './routes/_json/json-conversions'
 
 // Create Virtual Routes
 
@@ -46,20 +47,7 @@ const TextLoremIpsumGeneratorLazyImport = createFileRoute(
 const TextListSorterRandomizerLazyImport = createFileRoute(
   '/_text/list-sorter-randomizer',
 )()
-const JsonYamlToJsonConverterLazyImport = createFileRoute(
-  '/_json/yaml-to-json-converter',
-)()
-const JsonXmlToJsonConverterLazyImport = createFileRoute(
-  '/_json/xml-to-json-converter',
-)()
-const JsonJsonToYamlConverterLazyImport = createFileRoute(
-  '/_json/json-to-yaml-converter',
-)()
-const JsonJsonToXmlConverterLazyImport = createFileRoute(
-  '/_json/json-to-xml-converter',
-)()
-const JsonJsonMinifierLazyImport = createFileRoute('/_json/json-minifier')()
-const JsonJsonFormatterLazyImport = createFileRoute('/_json/json-formatter')()
+const JsonJsonBeautifierLazyImport = createFileRoute('/_json/json-beautifier')()
 const ImageImageResizerLazyImport = createFileRoute('/_image/image-resizer')()
 const ImageImageFormatConverterLazyImport = createFileRoute(
   '/_image/image-format-converter',
@@ -202,58 +190,12 @@ const TextListSorterRandomizerLazyRoute =
     import('./routes/_text/list-sorter-randomizer.lazy').then((d) => d.Route),
   )
 
-const JsonYamlToJsonConverterLazyRoute =
-  JsonYamlToJsonConverterLazyImport.update({
-    id: '/_json/yaml-to-json-converter',
-    path: '/yaml-to-json-converter',
-    getParentRoute: () => rootRoute,
-  } as any).lazy(() =>
-    import('./routes/_json/yaml-to-json-converter.lazy').then((d) => d.Route),
-  )
-
-const JsonXmlToJsonConverterLazyRoute = JsonXmlToJsonConverterLazyImport.update(
-  {
-    id: '/_json/xml-to-json-converter',
-    path: '/xml-to-json-converter',
-    getParentRoute: () => rootRoute,
-  } as any,
-).lazy(() =>
-  import('./routes/_json/xml-to-json-converter.lazy').then((d) => d.Route),
-)
-
-const JsonJsonToYamlConverterLazyRoute =
-  JsonJsonToYamlConverterLazyImport.update({
-    id: '/_json/json-to-yaml-converter',
-    path: '/json-to-yaml-converter',
-    getParentRoute: () => rootRoute,
-  } as any).lazy(() =>
-    import('./routes/_json/json-to-yaml-converter.lazy').then((d) => d.Route),
-  )
-
-const JsonJsonToXmlConverterLazyRoute = JsonJsonToXmlConverterLazyImport.update(
-  {
-    id: '/_json/json-to-xml-converter',
-    path: '/json-to-xml-converter',
-    getParentRoute: () => rootRoute,
-  } as any,
-).lazy(() =>
-  import('./routes/_json/json-to-xml-converter.lazy').then((d) => d.Route),
-)
-
-const JsonJsonMinifierLazyRoute = JsonJsonMinifierLazyImport.update({
-  id: '/_json/json-minifier',
-  path: '/json-minifier',
+const JsonJsonBeautifierLazyRoute = JsonJsonBeautifierLazyImport.update({
+  id: '/_json/json-beautifier',
+  path: '/json-beautifier',
   getParentRoute: () => rootRoute,
 } as any).lazy(() =>
-  import('./routes/_json/json-minifier.lazy').then((d) => d.Route),
-)
-
-const JsonJsonFormatterLazyRoute = JsonJsonFormatterLazyImport.update({
-  id: '/_json/json-formatter',
-  path: '/json-formatter',
-  getParentRoute: () => rootRoute,
-} as any).lazy(() =>
-  import('./routes/_json/json-formatter.lazy').then((d) => d.Route),
+  import('./routes/_json/json-beautifier.lazy').then((d) => d.Route),
 )
 
 const ImageImageResizerLazyRoute = ImageImageResizerLazyImport.update({
@@ -345,6 +287,12 @@ const EncodingBackslashEscapeUnescapeLazyRoute =
     ),
   )
 
+const JsonJsonConversionsRoute = JsonJsonConversionsImport.update({
+  id: '/_json/json-conversions',
+  path: '/json-conversions',
+  getParentRoute: () => rootRoute,
+} as any)
+
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
@@ -354,6 +302,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/_json/json-conversions': {
+      id: '/_json/json-conversions'
+      path: '/json-conversions'
+      fullPath: '/json-conversions'
+      preLoaderRoute: typeof JsonJsonConversionsImport
       parentRoute: typeof rootRoute
     }
     '/_encoding/backslash-escape-unescape': {
@@ -419,46 +374,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ImageImageResizerLazyImport
       parentRoute: typeof rootRoute
     }
-    '/_json/json-formatter': {
-      id: '/_json/json-formatter'
-      path: '/json-formatter'
-      fullPath: '/json-formatter'
-      preLoaderRoute: typeof JsonJsonFormatterLazyImport
-      parentRoute: typeof rootRoute
-    }
-    '/_json/json-minifier': {
-      id: '/_json/json-minifier'
-      path: '/json-minifier'
-      fullPath: '/json-minifier'
-      preLoaderRoute: typeof JsonJsonMinifierLazyImport
-      parentRoute: typeof rootRoute
-    }
-    '/_json/json-to-xml-converter': {
-      id: '/_json/json-to-xml-converter'
-      path: '/json-to-xml-converter'
-      fullPath: '/json-to-xml-converter'
-      preLoaderRoute: typeof JsonJsonToXmlConverterLazyImport
-      parentRoute: typeof rootRoute
-    }
-    '/_json/json-to-yaml-converter': {
-      id: '/_json/json-to-yaml-converter'
-      path: '/json-to-yaml-converter'
-      fullPath: '/json-to-yaml-converter'
-      preLoaderRoute: typeof JsonJsonToYamlConverterLazyImport
-      parentRoute: typeof rootRoute
-    }
-    '/_json/xml-to-json-converter': {
-      id: '/_json/xml-to-json-converter'
-      path: '/xml-to-json-converter'
-      fullPath: '/xml-to-json-converter'
-      preLoaderRoute: typeof JsonXmlToJsonConverterLazyImport
-      parentRoute: typeof rootRoute
-    }
-    '/_json/yaml-to-json-converter': {
-      id: '/_json/yaml-to-json-converter'
-      path: '/yaml-to-json-converter'
-      fullPath: '/yaml-to-json-converter'
-      preLoaderRoute: typeof JsonYamlToJsonConverterLazyImport
+    '/_json/json-beautifier': {
+      id: '/_json/json-beautifier'
+      path: '/json-beautifier'
+      fullPath: '/json-beautifier'
+      preLoaderRoute: typeof JsonJsonBeautifierLazyImport
       parentRoute: typeof rootRoute
     }
     '/_text/list-sorter-randomizer': {
@@ -559,6 +479,7 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute
+  '/json-conversions': typeof JsonJsonConversionsRoute
   '/backslash-escape-unescape': typeof EncodingBackslashEscapeUnescapeLazyRoute
   '/base64-encoder-decoder': typeof EncodingBase64EncoderDecoderLazyRoute
   '/digital-certificate-decoder': typeof EncodingDigitalCertificateDecoderLazyRoute
@@ -568,12 +489,7 @@ export interface FileRoutesByFullPath {
   '/image-compressor': typeof ImageImageCompressorLazyRoute
   '/image-format-converter': typeof ImageImageFormatConverterLazyRoute
   '/image-resizer': typeof ImageImageResizerLazyRoute
-  '/json-formatter': typeof JsonJsonFormatterLazyRoute
-  '/json-minifier': typeof JsonJsonMinifierLazyRoute
-  '/json-to-xml-converter': typeof JsonJsonToXmlConverterLazyRoute
-  '/json-to-yaml-converter': typeof JsonJsonToYamlConverterLazyRoute
-  '/xml-to-json-converter': typeof JsonXmlToJsonConverterLazyRoute
-  '/yaml-to-json-converter': typeof JsonYamlToJsonConverterLazyRoute
+  '/json-beautifier': typeof JsonJsonBeautifierLazyRoute
   '/list-sorter-randomizer': typeof TextListSorterRandomizerLazyRoute
   '/lorem-ipsum-generator': typeof TextLoremIpsumGeneratorLazyRoute
   '/random-string-generator': typeof TextRandomStringGeneratorLazyRoute
@@ -591,6 +507,7 @@ export interface FileRoutesByFullPath {
 
 export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
+  '/json-conversions': typeof JsonJsonConversionsRoute
   '/backslash-escape-unescape': typeof EncodingBackslashEscapeUnescapeLazyRoute
   '/base64-encoder-decoder': typeof EncodingBase64EncoderDecoderLazyRoute
   '/digital-certificate-decoder': typeof EncodingDigitalCertificateDecoderLazyRoute
@@ -600,12 +517,7 @@ export interface FileRoutesByTo {
   '/image-compressor': typeof ImageImageCompressorLazyRoute
   '/image-format-converter': typeof ImageImageFormatConverterLazyRoute
   '/image-resizer': typeof ImageImageResizerLazyRoute
-  '/json-formatter': typeof JsonJsonFormatterLazyRoute
-  '/json-minifier': typeof JsonJsonMinifierLazyRoute
-  '/json-to-xml-converter': typeof JsonJsonToXmlConverterLazyRoute
-  '/json-to-yaml-converter': typeof JsonJsonToYamlConverterLazyRoute
-  '/xml-to-json-converter': typeof JsonXmlToJsonConverterLazyRoute
-  '/yaml-to-json-converter': typeof JsonYamlToJsonConverterLazyRoute
+  '/json-beautifier': typeof JsonJsonBeautifierLazyRoute
   '/list-sorter-randomizer': typeof TextListSorterRandomizerLazyRoute
   '/lorem-ipsum-generator': typeof TextLoremIpsumGeneratorLazyRoute
   '/random-string-generator': typeof TextRandomStringGeneratorLazyRoute
@@ -624,6 +536,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexLazyRoute
+  '/_json/json-conversions': typeof JsonJsonConversionsRoute
   '/_encoding/backslash-escape-unescape': typeof EncodingBackslashEscapeUnescapeLazyRoute
   '/_encoding/base64-encoder-decoder': typeof EncodingBase64EncoderDecoderLazyRoute
   '/_encoding/digital-certificate-decoder': typeof EncodingDigitalCertificateDecoderLazyRoute
@@ -633,12 +546,7 @@ export interface FileRoutesById {
   '/_image/image-compressor': typeof ImageImageCompressorLazyRoute
   '/_image/image-format-converter': typeof ImageImageFormatConverterLazyRoute
   '/_image/image-resizer': typeof ImageImageResizerLazyRoute
-  '/_json/json-formatter': typeof JsonJsonFormatterLazyRoute
-  '/_json/json-minifier': typeof JsonJsonMinifierLazyRoute
-  '/_json/json-to-xml-converter': typeof JsonJsonToXmlConverterLazyRoute
-  '/_json/json-to-yaml-converter': typeof JsonJsonToYamlConverterLazyRoute
-  '/_json/xml-to-json-converter': typeof JsonXmlToJsonConverterLazyRoute
-  '/_json/yaml-to-json-converter': typeof JsonYamlToJsonConverterLazyRoute
+  '/_json/json-beautifier': typeof JsonJsonBeautifierLazyRoute
   '/_text/list-sorter-randomizer': typeof TextListSorterRandomizerLazyRoute
   '/_text/lorem-ipsum-generator': typeof TextLoremIpsumGeneratorLazyRoute
   '/_text/random-string-generator': typeof TextRandomStringGeneratorLazyRoute
@@ -658,6 +566,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/json-conversions'
     | '/backslash-escape-unescape'
     | '/base64-encoder-decoder'
     | '/digital-certificate-decoder'
@@ -667,12 +576,7 @@ export interface FileRouteTypes {
     | '/image-compressor'
     | '/image-format-converter'
     | '/image-resizer'
-    | '/json-formatter'
-    | '/json-minifier'
-    | '/json-to-xml-converter'
-    | '/json-to-yaml-converter'
-    | '/xml-to-json-converter'
-    | '/yaml-to-json-converter'
+    | '/json-beautifier'
     | '/list-sorter-randomizer'
     | '/lorem-ipsum-generator'
     | '/random-string-generator'
@@ -689,6 +593,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/json-conversions'
     | '/backslash-escape-unescape'
     | '/base64-encoder-decoder'
     | '/digital-certificate-decoder'
@@ -698,12 +603,7 @@ export interface FileRouteTypes {
     | '/image-compressor'
     | '/image-format-converter'
     | '/image-resizer'
-    | '/json-formatter'
-    | '/json-minifier'
-    | '/json-to-xml-converter'
-    | '/json-to-yaml-converter'
-    | '/xml-to-json-converter'
-    | '/yaml-to-json-converter'
+    | '/json-beautifier'
     | '/list-sorter-randomizer'
     | '/lorem-ipsum-generator'
     | '/random-string-generator'
@@ -720,6 +620,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/_json/json-conversions'
     | '/_encoding/backslash-escape-unescape'
     | '/_encoding/base64-encoder-decoder'
     | '/_encoding/digital-certificate-decoder'
@@ -729,12 +630,7 @@ export interface FileRouteTypes {
     | '/_image/image-compressor'
     | '/_image/image-format-converter'
     | '/_image/image-resizer'
-    | '/_json/json-formatter'
-    | '/_json/json-minifier'
-    | '/_json/json-to-xml-converter'
-    | '/_json/json-to-yaml-converter'
-    | '/_json/xml-to-json-converter'
-    | '/_json/yaml-to-json-converter'
+    | '/_json/json-beautifier'
     | '/_text/list-sorter-randomizer'
     | '/_text/lorem-ipsum-generator'
     | '/_text/random-string-generator'
@@ -753,6 +649,7 @@ export interface FileRouteTypes {
 
 export interface RootRouteChildren {
   IndexLazyRoute: typeof IndexLazyRoute
+  JsonJsonConversionsRoute: typeof JsonJsonConversionsRoute
   EncodingBackslashEscapeUnescapeLazyRoute: typeof EncodingBackslashEscapeUnescapeLazyRoute
   EncodingBase64EncoderDecoderLazyRoute: typeof EncodingBase64EncoderDecoderLazyRoute
   EncodingDigitalCertificateDecoderLazyRoute: typeof EncodingDigitalCertificateDecoderLazyRoute
@@ -762,12 +659,7 @@ export interface RootRouteChildren {
   ImageImageCompressorLazyRoute: typeof ImageImageCompressorLazyRoute
   ImageImageFormatConverterLazyRoute: typeof ImageImageFormatConverterLazyRoute
   ImageImageResizerLazyRoute: typeof ImageImageResizerLazyRoute
-  JsonJsonFormatterLazyRoute: typeof JsonJsonFormatterLazyRoute
-  JsonJsonMinifierLazyRoute: typeof JsonJsonMinifierLazyRoute
-  JsonJsonToXmlConverterLazyRoute: typeof JsonJsonToXmlConverterLazyRoute
-  JsonJsonToYamlConverterLazyRoute: typeof JsonJsonToYamlConverterLazyRoute
-  JsonXmlToJsonConverterLazyRoute: typeof JsonXmlToJsonConverterLazyRoute
-  JsonYamlToJsonConverterLazyRoute: typeof JsonYamlToJsonConverterLazyRoute
+  JsonJsonBeautifierLazyRoute: typeof JsonJsonBeautifierLazyRoute
   TextListSorterRandomizerLazyRoute: typeof TextListSorterRandomizerLazyRoute
   TextLoremIpsumGeneratorLazyRoute: typeof TextLoremIpsumGeneratorLazyRoute
   TextRandomStringGeneratorLazyRoute: typeof TextRandomStringGeneratorLazyRoute
@@ -785,6 +677,7 @@ export interface RootRouteChildren {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
+  JsonJsonConversionsRoute: JsonJsonConversionsRoute,
   EncodingBackslashEscapeUnescapeLazyRoute:
     EncodingBackslashEscapeUnescapeLazyRoute,
   EncodingBase64EncoderDecoderLazyRoute: EncodingBase64EncoderDecoderLazyRoute,
@@ -798,12 +691,7 @@ const rootRouteChildren: RootRouteChildren = {
   ImageImageCompressorLazyRoute: ImageImageCompressorLazyRoute,
   ImageImageFormatConverterLazyRoute: ImageImageFormatConverterLazyRoute,
   ImageImageResizerLazyRoute: ImageImageResizerLazyRoute,
-  JsonJsonFormatterLazyRoute: JsonJsonFormatterLazyRoute,
-  JsonJsonMinifierLazyRoute: JsonJsonMinifierLazyRoute,
-  JsonJsonToXmlConverterLazyRoute: JsonJsonToXmlConverterLazyRoute,
-  JsonJsonToYamlConverterLazyRoute: JsonJsonToYamlConverterLazyRoute,
-  JsonXmlToJsonConverterLazyRoute: JsonXmlToJsonConverterLazyRoute,
-  JsonYamlToJsonConverterLazyRoute: JsonYamlToJsonConverterLazyRoute,
+  JsonJsonBeautifierLazyRoute: JsonJsonBeautifierLazyRoute,
   TextListSorterRandomizerLazyRoute: TextListSorterRandomizerLazyRoute,
   TextLoremIpsumGeneratorLazyRoute: TextLoremIpsumGeneratorLazyRoute,
   TextRandomStringGeneratorLazyRoute: TextRandomStringGeneratorLazyRoute,
@@ -830,6 +718,7 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
+        "/_json/json-conversions",
         "/_encoding/backslash-escape-unescape",
         "/_encoding/base64-encoder-decoder",
         "/_encoding/digital-certificate-decoder",
@@ -839,12 +728,7 @@ export const routeTree = rootRoute
         "/_image/image-compressor",
         "/_image/image-format-converter",
         "/_image/image-resizer",
-        "/_json/json-formatter",
-        "/_json/json-minifier",
-        "/_json/json-to-xml-converter",
-        "/_json/json-to-yaml-converter",
-        "/_json/xml-to-json-converter",
-        "/_json/yaml-to-json-converter",
+        "/_json/json-beautifier",
         "/_text/list-sorter-randomizer",
         "/_text/lorem-ipsum-generator",
         "/_text/random-string-generator",
@@ -862,6 +746,9 @@ export const routeTree = rootRoute
     },
     "/": {
       "filePath": "index.lazy.tsx"
+    },
+    "/_json/json-conversions": {
+      "filePath": "_json/json-conversions.tsx"
     },
     "/_encoding/backslash-escape-unescape": {
       "filePath": "_encoding/backslash-escape-unescape.lazy.tsx"
@@ -890,23 +777,8 @@ export const routeTree = rootRoute
     "/_image/image-resizer": {
       "filePath": "_image/image-resizer.lazy.tsx"
     },
-    "/_json/json-formatter": {
-      "filePath": "_json/json-formatter.lazy.tsx"
-    },
-    "/_json/json-minifier": {
-      "filePath": "_json/json-minifier.lazy.tsx"
-    },
-    "/_json/json-to-xml-converter": {
-      "filePath": "_json/json-to-xml-converter.lazy.tsx"
-    },
-    "/_json/json-to-yaml-converter": {
-      "filePath": "_json/json-to-yaml-converter.lazy.tsx"
-    },
-    "/_json/xml-to-json-converter": {
-      "filePath": "_json/xml-to-json-converter.lazy.tsx"
-    },
-    "/_json/yaml-to-json-converter": {
-      "filePath": "_json/yaml-to-json-converter.lazy.tsx"
+    "/_json/json-beautifier": {
+      "filePath": "_json/json-beautifier.lazy.tsx"
     },
     "/_text/list-sorter-randomizer": {
       "filePath": "_text/list-sorter-randomizer.lazy.tsx"

@@ -1,17 +1,14 @@
-import { parse } from 'yaml'
-import beautifyJs from './beautifyJs.utils'
+import { parse } from "yaml";
 
 interface IYamlToJsonOptions {
-	yaml: string,
-	indentSize: number
+	yaml: string;
+	indentSize: number;
 }
 
 const yamlToJson = (options: IYamlToJsonOptions): string => {
-	const yamlObject = parse(options.yaml)
+	const yamlObject = parse(options.yaml);
 
-	return beautifyJs(JSON.stringify(yamlObject), {
-		indentSize: options.indentSize
-	})
-}
+	return JSON.stringify(yamlObject, null, " ".repeat(options.indentSize));
+};
 
-export default yamlToJson
+export default yamlToJson;
