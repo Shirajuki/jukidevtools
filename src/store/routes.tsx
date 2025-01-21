@@ -10,7 +10,6 @@ import {
 	LinkOutlined,
 	FileZipOutlined,
 	SortAscendingOutlined,
-	TrademarkCircleOutlined,
 	OrderedListOutlined,
 	BuildOutlined,
 	FieldStringOutlined,
@@ -261,16 +260,10 @@ export const TOOL_ROUTES: IToolRouteGroup[] = [
 				description: "TODO",
 			},
 			{
-				label: "Regex Tester",
-				path: "/regex-tester",
-				icon: TrademarkCircleOutlined,
-				alias: [
-					"Regular Expression Tester",
-					"Regular Expression Parser",
-					"Regular Expression Sandbox",
-				],
-				description:
-					"Regex Tester lets you write, test, and debug regular expressions with ease. Boost developer productivity!",
+				label: "Lottie Watermark Removal",
+				path: "/lottie-watermark-removal",
+				icon: LinkOutlined,
+				description: "TODO",
 			},
 		],
 	},
@@ -286,6 +279,12 @@ export const TOOL_ROUTES: IToolRouteGroup[] = [
 			{
 				label: "JWT.io",
 				path: "https://jwt.io/",
+				icon: LinkOutlined,
+				description: "TODO",
+			},
+			{
+				label: "Regex101",
+				path: "https://regex101.com/",
 				icon: LinkOutlined,
 				description: "TODO",
 			},

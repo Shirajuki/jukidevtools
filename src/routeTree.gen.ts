@@ -28,9 +28,6 @@ const WebJavascriptBeautifierLazyImport = createFileRoute(
 const WebHtmlViewerLazyImport = createFileRoute('/_web/html-viewer')()
 const WebHtmlBeautifierLazyImport = createFileRoute('/_web/html-beautifier')()
 const WebCssBeautifierLazyImport = createFileRoute('/_web/css-beautifier')()
-const UtilitiesRegexTesterLazyImport = createFileRoute(
-  '/_utilities/regex-tester',
-)()
 const TextWordCounterLazyImport = createFileRoute('/_text/word-counter')()
 const TextTextDiffCheckerLazyImport = createFileRoute(
   '/_text/text-diff-checker',
@@ -129,14 +126,6 @@ const WebCssBeautifierLazyRoute = WebCssBeautifierLazyImport.update({
   getParentRoute: () => rootRoute,
 } as any).lazy(() =>
   import('./routes/_web/css-beautifier.lazy').then((d) => d.Route),
-)
-
-const UtilitiesRegexTesterLazyRoute = UtilitiesRegexTesterLazyImport.update({
-  id: '/_utilities/regex-tester',
-  path: '/regex-tester',
-  getParentRoute: () => rootRoute,
-} as any).lazy(() =>
-  import('./routes/_utilities/regex-tester.lazy').then((d) => d.Route),
 )
 
 const TextWordCounterLazyRoute = TextWordCounterLazyImport.update({
@@ -423,13 +412,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TextWordCounterLazyImport
       parentRoute: typeof rootRoute
     }
-    '/_utilities/regex-tester': {
-      id: '/_utilities/regex-tester'
-      path: '/regex-tester'
-      fullPath: '/regex-tester'
-      preLoaderRoute: typeof UtilitiesRegexTesterLazyImport
-      parentRoute: typeof rootRoute
-    }
     '/_web/css-beautifier': {
       id: '/_web/css-beautifier'
       path: '/css-beautifier'
@@ -496,7 +478,6 @@ export interface FileRoutesByFullPath {
   '/text-case-converter': typeof TextTextCaseConverterLazyRoute
   '/text-diff-checker': typeof TextTextDiffCheckerLazyRoute
   '/word-counter': typeof TextWordCounterLazyRoute
-  '/regex-tester': typeof UtilitiesRegexTesterLazyRoute
   '/css-beautifier': typeof WebCssBeautifierLazyRoute
   '/html-beautifier': typeof WebHtmlBeautifierLazyRoute
   '/html-viewer': typeof WebHtmlViewerLazyRoute
@@ -524,7 +505,6 @@ export interface FileRoutesByTo {
   '/text-case-converter': typeof TextTextCaseConverterLazyRoute
   '/text-diff-checker': typeof TextTextDiffCheckerLazyRoute
   '/word-counter': typeof TextWordCounterLazyRoute
-  '/regex-tester': typeof UtilitiesRegexTesterLazyRoute
   '/css-beautifier': typeof WebCssBeautifierLazyRoute
   '/html-beautifier': typeof WebHtmlBeautifierLazyRoute
   '/html-viewer': typeof WebHtmlViewerLazyRoute
@@ -553,7 +533,6 @@ export interface FileRoutesById {
   '/_text/text-case-converter': typeof TextTextCaseConverterLazyRoute
   '/_text/text-diff-checker': typeof TextTextDiffCheckerLazyRoute
   '/_text/word-counter': typeof TextWordCounterLazyRoute
-  '/_utilities/regex-tester': typeof UtilitiesRegexTesterLazyRoute
   '/_web/css-beautifier': typeof WebCssBeautifierLazyRoute
   '/_web/html-beautifier': typeof WebHtmlBeautifierLazyRoute
   '/_web/html-viewer': typeof WebHtmlViewerLazyRoute
@@ -583,7 +562,6 @@ export interface FileRouteTypes {
     | '/text-case-converter'
     | '/text-diff-checker'
     | '/word-counter'
-    | '/regex-tester'
     | '/css-beautifier'
     | '/html-beautifier'
     | '/html-viewer'
@@ -610,7 +588,6 @@ export interface FileRouteTypes {
     | '/text-case-converter'
     | '/text-diff-checker'
     | '/word-counter'
-    | '/regex-tester'
     | '/css-beautifier'
     | '/html-beautifier'
     | '/html-viewer'
@@ -637,7 +614,6 @@ export interface FileRouteTypes {
     | '/_text/text-case-converter'
     | '/_text/text-diff-checker'
     | '/_text/word-counter'
-    | '/_utilities/regex-tester'
     | '/_web/css-beautifier'
     | '/_web/html-beautifier'
     | '/_web/html-viewer'
@@ -666,7 +642,6 @@ export interface RootRouteChildren {
   TextTextCaseConverterLazyRoute: typeof TextTextCaseConverterLazyRoute
   TextTextDiffCheckerLazyRoute: typeof TextTextDiffCheckerLazyRoute
   TextWordCounterLazyRoute: typeof TextWordCounterLazyRoute
-  UtilitiesRegexTesterLazyRoute: typeof UtilitiesRegexTesterLazyRoute
   WebCssBeautifierLazyRoute: typeof WebCssBeautifierLazyRoute
   WebHtmlBeautifierLazyRoute: typeof WebHtmlBeautifierLazyRoute
   WebHtmlViewerLazyRoute: typeof WebHtmlViewerLazyRoute
@@ -698,7 +673,6 @@ const rootRouteChildren: RootRouteChildren = {
   TextTextCaseConverterLazyRoute: TextTextCaseConverterLazyRoute,
   TextTextDiffCheckerLazyRoute: TextTextDiffCheckerLazyRoute,
   TextWordCounterLazyRoute: TextWordCounterLazyRoute,
-  UtilitiesRegexTesterLazyRoute: UtilitiesRegexTesterLazyRoute,
   WebCssBeautifierLazyRoute: WebCssBeautifierLazyRoute,
   WebHtmlBeautifierLazyRoute: WebHtmlBeautifierLazyRoute,
   WebHtmlViewerLazyRoute: WebHtmlViewerLazyRoute,
@@ -735,7 +709,6 @@ export const routeTree = rootRoute
         "/_text/text-case-converter",
         "/_text/text-diff-checker",
         "/_text/word-counter",
-        "/_utilities/regex-tester",
         "/_web/css-beautifier",
         "/_web/html-beautifier",
         "/_web/html-viewer",
@@ -797,9 +770,6 @@ export const routeTree = rootRoute
     },
     "/_text/word-counter": {
       "filePath": "_text/word-counter.lazy.tsx"
-    },
-    "/_utilities/regex-tester": {
-      "filePath": "_utilities/regex-tester.lazy.tsx"
     },
     "/_web/css-beautifier": {
       "filePath": "_web/css-beautifier.lazy.tsx"
