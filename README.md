@@ -1,8 +1,14 @@
-# jukidevtools
+<div align="center">
+        <img src="https://raw.githubusercontent.com/Shirajuki/jukidevtools/refs/heads/master/public/thumbnail.png"
+        alt="Logo" height="300">
+</div>
 
-A collection of tools useful for development. The app should be lightweight, running entirely on the client-side. It also fully supports PWA.
-
-![logo](./public/logo.png)
+<div align="center">
+  <h1>jukidevtools</h1>
+  <p>
+    A collection of tools useful for development. The app should be lightweight, running entirely on the client-side. It also fully supports PWA.
+  </p>
+</div>
 
 ---
 

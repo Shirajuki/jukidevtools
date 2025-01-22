@@ -6,9 +6,7 @@ import {
 	ConsoleSqlOutlined,
 	FileImageOutlined,
 	PictureOutlined,
-	LockOutlined,
 	LinkOutlined,
-	FileZipOutlined,
 	SortAscendingOutlined,
 	OrderedListOutlined,
 	BuildOutlined,
@@ -218,7 +216,7 @@ export const TOOL_ROUTES: IToolRouteGroup[] = [
 			},
 			{
 				label: "Lottie Watermark Removal",
-				path: "/lottie-watermark-removal",
+				path: "https://lottiefiles.github.io/lottie-docs/playground/json_editor/",
 				icon: LinkOutlined,
 				description: "TODO",
 			},
@@ -260,6 +258,12 @@ export const TOOL_ROUTES: IToolRouteGroup[] = [
 			{
 				label: "cURL Converter",
 				path: "https://curlconverter.com/",
+				icon: LinkOutlined,
+				description: "TODO",
+			},
+			{
+				label: "PostSpark",
+				path: "https://postspark.app/",
 				icon: LinkOutlined,
 				description: "TODO",
 			},
