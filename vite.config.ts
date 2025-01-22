@@ -7,6 +7,7 @@ const prefix = "monaco-editor/esm/vs";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: "/jukidevtools/",
 	plugins: [
 		TanStackRouterVite(),
 		viteReact(),
@@ -17,10 +18,9 @@ export default defineConfig({
 				maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
 			},
 			manifest: {
-				name: "True Devtools",
-				short_name: "True Devtools",
-				description:
-					"Stop pasting your code on random websites, True Devtools centralizes all your go-to utilities in one convenient location with 45+ carefully crafted tools.",
+				name: "Jukidevtools",
+				short_name: "Jukidevtools",
+				description: "Some cool tools and utilities for developers",
 				theme_color: "#1677ff",
 				icons: [
 					{
