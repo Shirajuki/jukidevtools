@@ -27,7 +27,6 @@ const CsvToJson = (options: ICsvToJsonOptions): string => {
 		} else if (start < i && inputKeys[i] === '"') start = i;
 		i += 1;
 	}
-	console.log(keys);
 
 	// Parse out the values, specifically parsing out the strings, then map the values to the keys using fromEntries
 	const inputValues = input.split("\n").slice(1);
@@ -92,9 +91,7 @@ const CsvToJson = (options: ICsvToJsonOptions): string => {
 				}
 				return value;
 			});
-		console.log(values, values.length);
 		output.push(Object.fromEntries(values.map((value, index) => [keys[index], JSON.parse(value)])));
-		console.log(output);
 	}
 
 	const json = JSON.stringify(output, null, " ".repeat(options.indentSize));

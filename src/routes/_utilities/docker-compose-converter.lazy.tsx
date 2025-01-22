@@ -5,22 +5,21 @@ import type * as monaco from "monaco-editor";
 import useCopyText from "../../hooks/useCopyText.hooks";
 import InputOutputLayout from "../../layouts/InputOutputLayout/InputOutputLayout.component";
 import CodeEditor from "../../components/CodeEditor.component";
-import textSample from "../../data/text-sample.txt?raw";
-import unicodeToHex from "../../utils/unicodeToHex.utils";
+import Decomposerize from "decomposerize";
+import Composerize from "composerize";
 import { createLazyFileRoute } from "@tanstack/react-router";
-import hexToUnicode from "../../utils/hexToUnicode.utils";
 
-export const Route = createLazyFileRoute("/_encoding/unicode-to-hex-converter")({
-	component: UnicodeToHexConverter,
+export const Route = createLazyFileRoute("/_utilities/docker-compose-converter")({
+	component: DockerComposeConverter,
 });
 
-type IMode = "encode" | "decode";
+type IMode = "compose" | "run";
 export interface IOptionTypes {
 	text: string;
 	outputText: string;
 }
 
-function UnicodeToHexConverter() {
+function DockerComposeConverter() {
 	const copyText = useCopyText();
 	const codeEditorRef = useRef<monaco.editor.IStandaloneCodeEditor>(null);
 	const outputCodeEditorRef = useRef<monaco.editor.IStandaloneCodeEditor>(null);
@@ -28,17 +27,40 @@ function UnicodeToHexConverter() {
 		text: "",
 		outputText: "",
 	});
-	const [mode, setMode] = useState<IMode>("encode");
+	const [mode, setMode] = useState<IMode>("run");
 
 	const generateSample = () => {
-		options.current.text = textSample;
+		if (mode === "run") {
+			options.current.text = `name: <your project name>
+services:
+    nginx:
+        ports:
+            - 80:80
+        volumes:
+            - /var/run/docker.sock:/tmp/docker.sock:ro
+        restart: always
+        logging:
+            options:
+                max-size: 1g
+        image: nginx`;
+		} else {
+			options.current.text =
+				"docker run -p 80:80 -v /var/run/docker.sock:/tmp/docker.sock:ro --restart always --log-opt max-size=1g nginx";
+		}
 		codeEditorRef.current?.setValue(options.current.text);
-		outputCodeEditorRef.current?.setValue(unicodeToHex(options.current.text));
+		outputCodeEditorRef.current?.setValue(composerize(options.current.text, mode));
 	};
 
 	const copyOutput = () => {
 		if (options.current.outputText.trim().length === 0) return;
 		copyText(options.current.outputText);
+	};
+
+	const composerize = (text: string, mode: string) => {
+		try {
+			return mode === "run" ? Decomposerize(text) : Composerize(text);
+		} catch (_) {}
+		return "";
 	};
 
 	return (
@@ -49,10 +71,13 @@ function UnicodeToHexConverter() {
 						value={mode}
 						onChange={(event: RadioChangeEvent) => {
 							setMode(event.target.value);
+							outputCodeEditorRef.current?.setValue(
+								composerize(options.current.text, event.target.value),
+							);
 						}}
 					>
-						<Radio value="encode">Unicode2Hex</Radio>
-						<Radio value="decode">Hex2Unicode</Radio>
+						<Radio value="run">Compose2Run</Radio>
+						<Radio value="compose">Run2Compose</Radio>
 					</Radio.Group>
 					<Button size="large" onClick={generateSample}>
 						Sample
@@ -66,8 +91,7 @@ function UnicodeToHexConverter() {
 					language="text"
 					onChange={(text) => {
 						options.current.text = text;
-						options.current.outputText =
-							mode === "encode" ? unicodeToHex(text) : hexToUnicode(text);
+						options.current.outputText = composerize(text, mode);
 						outputCodeEditorRef.current?.setValue(options.current.outputText);
 					}}
 				/>

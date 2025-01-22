@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useReducer, useRef } from "react";
 import { Button, Select, Space } from "antd";
 import { ArrowRightOutlined, CopyOutlined } from "@ant-design/icons";
 import type * as monaco from "monaco-editor";
@@ -69,6 +69,7 @@ const combinations = [
 ];
 
 function JsonConversions() {
+	const refresh = useReducer((num) => num + 1, 0)[1];
 	const dispatch = useAppDispatch();
 	const copyText = useCopyText();
 
@@ -162,6 +163,7 @@ function JsonConversions() {
 						]}
 						onChange={(value: "json" | "xml" | "yaml" | "csv") => {
 							options.current.selectedInput = value;
+							refresh();
 						}}
 					/>
 					<Button size="large" onClick={generateSample}>
@@ -176,7 +178,7 @@ function JsonConversions() {
 				<CodeEditor
 					ref={codeEditorRef}
 					code={options.current.input}
-					language="json"
+					language={options.current.selectedInput}
 					onChange={(value) => {
 						options.current.input = value;
 					}}
@@ -194,6 +196,7 @@ function JsonConversions() {
 						]}
 						onChange={(value: "json" | "xml" | "yaml" | "csv") => {
 							options.current.selectedOutput = value;
+							refresh();
 						}}
 					/>
 					<Select
@@ -213,7 +216,7 @@ function JsonConversions() {
 				<CodeEditor
 					ref={outputCodeEditorRef}
 					code={options.current.output}
-					language="yaml"
+					language={options.current.selectedOutput}
 					onChange={(value) => {
 						options.current.output = value;
 					}}

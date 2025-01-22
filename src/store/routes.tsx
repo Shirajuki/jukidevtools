@@ -13,7 +13,6 @@ import {
 	OrderedListOutlined,
 	BuildOutlined,
 	FieldStringOutlined,
-	PercentageOutlined,
 } from "@ant-design/icons";
 
 export interface IToolRoute {
@@ -145,14 +144,6 @@ export const TOOL_ROUTES: IToolRouteGroup[] = [
 					"Generate secure random strings at your fingertips. Random String Generator creates unique strings for passwords, tokens, and more.",
 			},
 			{
-				label: "Text Case Converter",
-				path: "/text-case-converter",
-				icon: RetweetOutlined,
-				alias: ["Text String Upper Lower Capitalized Case Converter"],
-				description:
-					"Effortlessly convert text cases. Text Case Converter offers uppercase, lowercase, capitalized case for all your content needs.",
-			},
-			{
 				label: "List Sorter / Randomizer",
 				path: "/list-sorter-randomizer",
 				icon: SortAscendingOutlined,
@@ -169,33 +160,13 @@ export const TOOL_ROUTES: IToolRouteGroup[] = [
 				label: "Unicode to Hex Converter",
 				path: "/unicode-to-hex-converter",
 				icon: RetweetOutlined,
-				alias: ["Unicode Text String to Hex Code Converter"],
+				alias: [
+					"Unicode Text String to Hex Code Converter",
+					"Hex to Unicode Converter",
+					"Hex to Unicode Text String Converter",
+				],
 				description:
 					"Effortlessly convert Unicode to Hex. Translate characters to their corresponding hex codes, simplifying web development and data analysis.",
-			},
-			{
-				label: "Hex to Unicode Converter",
-				path: "/hex-to-unicode-converter",
-				icon: RetweetOutlined,
-				alias: ["Hex Code to Unicode Text String Converter"],
-				description:
-					"Decode Hex to Unicode Instantly. Translate hexadecimal code into human-readable characters, simplifying data interpretation.",
-			},
-			{
-				label: "Backslash Escape / Unescape",
-				path: "/backslash-escape-unescape",
-				icon: PercentageOutlined,
-				alias: ["JavaScript JS Text String Backslash Escaper / Unescaper / Encoder / Decoder"],
-				description:
-					"Secure your strings. Backslash Escape / Unescape safeguards data by encoding special characters for safe storage and transmission.",
-			},
-			{
-				label: "Base64 Encoder / Decoder",
-				path: "/base64-encoder-decoder",
-				icon: FileZipOutlined,
-				alias: ["Base64 Parser"],
-				description:
-					"Effortlessly encode & decode Base64 with True Devtools! Convert text for secure data transmission.",
 			},
 			{
 				label: "URL Encoder / Decoder",
@@ -204,14 +175,6 @@ export const TOOL_ROUTES: IToolRouteGroup[] = [
 				alias: ["URL Parser"],
 				description:
 					"Decode encoded URLs or encode text for URLs with True Devtools' URL Encoder / Decoder. Effortlessly navigate special characters & avoid errors.",
-			},
-			{
-				label: "Digital Certificate Decoder",
-				path: "/digital-certificate-decoder",
-				icon: LockOutlined,
-				alias: ["X509 SSL Digital Certificate Decoder Parser"],
-				description:
-					"Digital Certificate Decoder lets you decode and view certificate details for enhanced security analysis.",
 			},
 		],
 	},
@@ -248,12 +211,6 @@ export const TOOL_ROUTES: IToolRouteGroup[] = [
 		label: "Local Utilities",
 		routes: [
 			{
-				label: "cURL Converter",
-				path: "/curl-converter",
-				icon: LinkOutlined,
-				description: "TODO",
-			},
-			{
 				label: "Docker Compose Converter",
 				path: "/docker-compose-converter",
 				icon: LinkOutlined,
@@ -285,6 +242,24 @@ export const TOOL_ROUTES: IToolRouteGroup[] = [
 			{
 				label: "Regex101",
 				path: "https://regex101.com/",
+				icon: LinkOutlined,
+				description: "TODO",
+			},
+			{
+				label: "Javascript Deobfuscator",
+				path: "https://deobfuscate.relative.im/",
+				icon: LinkOutlined,
+				description: "TODO",
+			},
+			{
+				label: "Dogbolt",
+				path: "https://dogbolt.org/",
+				icon: LinkOutlined,
+				description: "TODO",
+			},
+			{
+				label: "cURL Converter",
+				path: "https://curlconverter.com/",
 				icon: LinkOutlined,
 				description: "TODO",
 			},
