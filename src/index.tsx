@@ -11,6 +11,7 @@ import { routeTree } from "./routeTree.gen";
 import NotFound from "./components/NotFound.component";
 const router = createRouter({
 	routeTree,
+	basepath: "/jukidevtools",
 	defaultNotFoundComponent: () => {
 		return <NotFound />;
 	},
