@@ -1,66 +1,50 @@
 # jukidevtools
 
-TrueDevtools.com is a free collection of 45+ carefully crafted tools useful for development. Stop pasting your code on various random websites, True Devtools centralizes all your go-to utilities in one convenient location.
+A collection of tools useful for development. The app should be lightweight, running entirely on the client-side. It also fully supports PWA.
 
-The app is lightweight and run entirely on your client-side, ensures a seamless experience without compromising on security (no user data is stored). It also fully supports PWA, you can install it for offline usage.
+![logo](./public/logo.png)
 
 ---
 
 ### Features
 
-#### HTML / CSS / JS tools
-- HTML Formatter
-- HTML Minifier
+#### Web tools
+
+- HTML Beautifier
 - HTML Viewer
-- HTML Entity Encoder / Decoder
-- CSS Formatter
-- CSS Minifier
-- JavaScript Formatter
-- JavaScript Minifier
+- CSS Beautifier
+- JavaScript Beautifier
+- SQL Formatter
+
+#### JSON tools
+
+- JSON Beautifier
+- JSON Conversion (yaml, xml, csv)
 
 #### Text tools
-- Regex Tester
+
 - Text Diff Checker
 - Word Counter
 - Lorem Ipsum Generator
 - Random String Generator
-- Unicode to Hex Converter
-- Hex to Unicode Converter
-- Text Case Converter
-- Backslash Escape / Unescape
 - List Sorter / Randomizer
-- Markdown Preview
 
-#### JSON tools
-- JSON Formatter
-- JSON Minifier
-- JSON to XML Converter
-- XML to JSON Converter
-- JSON to YAML Converter
-- YAML to JSON Converter
+#### Encoding tools
 
-#### Web tools
-- XML Formatter
-- XML Minifier
-- Base64 Encoder / Decoder
-- Base64 Image Encoder / Decoder
+- Unicode to Hex Converter
 - URL Encoder / Decoder
-- URL Parser
-- Digital Certificate Decoder
 
 #### Image tools
+
 - Image Resizer
 - JPEG / WEBP Compressor
-- JPG to PNG Converter
-- PNG to JPG Converter
 - Image Format Converter
 
 #### Utilities
-- Color Converter
-- Number Base Converter
-- UUID Generator
-- Hash Generator
-- JWT Decoder
-- SQL Formatter
-- Unix Timestamp Parser
-- Cron Expression Parser
+
+- Docker Compose Converter
+- Lottie Watermark Remover (TODO)
+
+### Credits
+
+This project, app and repository is a fork of https://github.com/dathoangnd/truedevtools.com

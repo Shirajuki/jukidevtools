@@ -68,13 +68,13 @@ function AppLayout() {
 	}, [location, toolRoute]);
 
 	const routeTitle = useMemo(() => {
-		if (!routeLabel) return "Jukidevtools - All-in-one Toolkit for Developers";
+		if (!routeLabel) return "Jukidevtools";
 		return `${routeLabel} | Jukidevtools`;
 	}, [routeLabel]);
 
 	const routeDescription = useMemo(() => {
 		if (toolRoute?.description) return toolRoute.description;
-		return "Stop pasting your code on random websites, True Devtools centralizes all your go-to utilities in one convenient location with 45+ carefully crafted tools.";
+		return "Some cool tools and utilities for developers";
 	}, [toolRoute]);
 
 	const [searchQuery, setSearchQuery] = useState("");
@@ -135,7 +135,7 @@ function AppLayout() {
 						<Link to="/" className="items-center gap-2 w-[310px] p-7 hidden xl:flex">
 							<img className="w-10" src={iconImageUrl} alt={description} />
 							<Typography.Title level={2} className="text-xl mb-0">
-								True Devtools
+								Jukidevtools
 							</Typography.Title>
 						</Link>
 						<Divider type="vertical" className="h-6 m-0 hidden xl:block" />

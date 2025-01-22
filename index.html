@@ -5,24 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jukidevtools</title>
 
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <meta name="theme-color" content="#1677ff">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
 
-    <meta property="og:title" content="True Devtools - All-in-one Toolkit for Developers" />
-    <meta property="og:description" content="Stop pasting your code on random websites, True Devtools centralizes all your go-to utilities in one convenient location with 45+ carefully crafted tools." />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#1677ff" />
+
+    <meta property="og:title" content="Jukidevtools" />
+    <meta
+      property="og:description"
+      content="Some cool tools and utilities for developers"
+    />
     <meta property="og:image" content="/thumbnail.png" />
 
-    <meta name="twitter:title" content="True Devtools - All-in-one Toolkit for Developers" />
-    <meta name="twitter:description" content="Stop pasting your code on random websites, True Devtools centralizes all your go-to utilities in one convenient location with 45+ carefully crafted tools." />
+    <meta name="twitter:title" content="Jukidevtools" />
+    <meta
+      name="twitter:description"
+      content="Some cool tools and utilities for developers"
+    />
     <meta name="twitter:image" content="/thumbnail.png" />
   </head>
   <body>
     <div id="root"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html-minifier/4.0.0/htmlminifier.min.js"></script>
     <script>
-      window.htmlMinifier = require("html-minifier")
-      window.Buffer = function() {}
+      window.htmlMinifier = require("html-minifier");
+      window.Buffer = function () {};
     </script>
     <script type="module" src="/src/index.tsx"></script>
   </body>

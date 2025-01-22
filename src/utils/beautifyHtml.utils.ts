@@ -1,17 +1,17 @@
-import beautify from 'js-beautify'
+import beautify from "js-beautify";
 
 interface IHtmlBeautifierOptions {
-	indentSize: number
+	indentSize: number;
 }
 
 const beautifyHtml = (html: string, options: IHtmlBeautifierOptions) => {
 	const formattedHtml = beautify.html(html, {
 		indent_size: options.indentSize,
 		preserve_newlines: true,
-		indent_inner_html: true
-	})
+		indent_inner_html: true,
+	});
 
-	return formattedHtml
-}
+	return formattedHtml;
+};
 
-export default beautifyHtml
+export default beautifyHtml;
