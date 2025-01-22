@@ -7,7 +7,7 @@ import { success, error } from "../../store/message/message.slice";
 import useCopyText from "../../hooks/useCopyText.hooks";
 import InputOutputLayout from "../../layouts/InputOutputLayout/InputOutputLayout.component";
 import CodeEditor from "../../components/CodeEditor.component";
-import jsonSample from "../../data/json-sample.minified.json?raw";
+import jsonSample from "../../data/json-sample.json?raw";
 import { createLazyFileRoute } from "@tanstack/react-router";
 
 export const Route = createLazyFileRoute("/_json/json-beautifier")({

@@ -63,11 +63,22 @@ const CsvToJson = (options: ICsvToJsonOptions): string => {
 
 		const replaceValues = parsedValues
 			.map((value, index) => {
+				let output = value.data;
 				if (value.type === "string") {
 					parsedValues[index] = "#REPLACED#";
-					return JSON.stringify(value.data);
+					const trimmed = value.data.trim();
+					output = JSON.stringify(value.data);
+					try {
+						if (
+							(trimmed[0] === "[" && trimmed[trimmed.length - 1] === "]") ||
+							(trimmed[0] === "{" && trimmed[trimmed.length - 1] === "}")
+						) {
+							output = JSON.stringify(JSON.parse(value.data.replaceAll('\\"', '"')));
+						}
+					} catch (_) {}
+					return output;
 				}
-				parsedValues[index] = value.data;
+				parsedValues[index] = output;
 			})
 			.filter((value) => value !== undefined);
 		let index = 0;

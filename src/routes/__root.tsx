@@ -68,8 +68,8 @@ function AppLayout() {
 	}, [location, toolRoute]);
 
 	const routeTitle = useMemo(() => {
-		if (!routeLabel) return "True Devtools - All-in-one Toolkit for Developers";
-		return `${routeLabel} | True Devtools`;
+		if (!routeLabel) return "Jukidevtools - All-in-one Toolkit for Developers";
+		return `${routeLabel} | Jukidevtools`;
 	}, [routeLabel]);
 
 	const routeDescription = useMemo(() => {
