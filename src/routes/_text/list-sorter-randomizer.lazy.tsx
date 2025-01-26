@@ -6,7 +6,7 @@ import useCopyText from "../../hooks/useCopyText.hooks";
 import InputOutputLayout from "../../layouts/InputOutputLayout/InputOutputLayout.component";
 import CodeEditor from "../../components/CodeEditor.component";
 import textSample from "../../data/text-sample.original.txt?raw";
-import shuffleArray from "../../utils/shuffleArray.utils";
+import shuffleArray from "../../utils/text/shuffleArray.utils";
 import { createLazyFileRoute } from "@tanstack/react-router";
 
 export const Route = createLazyFileRoute("/_text/list-sorter-randomizer")({

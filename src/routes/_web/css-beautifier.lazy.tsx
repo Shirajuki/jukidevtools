@@ -10,7 +10,7 @@ import InputOutputLayout from "../../layouts/InputOutputLayout/InputOutputLayout
 import CodeEditor from "../../components/CodeEditor.component";
 import cssSample from "../../data/css-sample.css?raw";
 import { createLazyFileRoute } from "@tanstack/react-router";
-import minifyCss from "../../utils/minifyCss.utils";
+import minifyCss from "../../utils/web/minifyCss.utils";
 
 export const Route = createLazyFileRoute("/_web/css-beautifier")({
 	component: CssBeautifier,

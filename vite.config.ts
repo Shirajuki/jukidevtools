@@ -1,3 +1,4 @@
+import MillionLint from "@million/lint";
 import { defineConfig } from "vite";
 import viteReact from "@vitejs/plugin-react";
 import { VitePWA } from "vite-plugin-pwa";
@@ -7,8 +8,12 @@ const prefix = "monaco-editor/esm/vs";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "/jukidevtools/",
+	base: "/jukidevtools/",
 	plugins: [
+		MillionLint.vite({
+			optimizeDOM: true,
+			enabled: true,
+		}),
 		TanStackRouterVite(),
 		viteReact(),
 		VitePWA({

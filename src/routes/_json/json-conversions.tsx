@@ -10,13 +10,13 @@ import CodeEditor from "../../components/CodeEditor.component";
 import jsonSample from "../../data/json-sample.json?raw";
 import xmlSample from "../../data/xml-sample.xml?raw";
 import yamlSample from "../../data/yaml-sample.yaml?raw";
-import jsonToYaml from "../../utils/jsonToYaml.utils";
+import jsonToYaml from "../../utils/json/jsonToYaml.utils";
 import { createFileRoute } from "@tanstack/react-router";
-import jsonToXml from "../../utils/jsonToXml.utils";
-import jsonToCsv from "../../utils/jsonToCsv.utils";
-import xmlToJson from "../../utils/xmlToJson.utils";
-import yamlToJson from "../../utils/yamlToJson.utils";
-import CsvToJson from "../../utils/csvToJson.utils";
+import jsonToXml from "../../utils/json/jsonToXml.utils";
+import jsonToCsv from "../../utils/json/jsonToCsv.utils";
+import xmlToJson from "../../utils/json/xmlToJson.utils";
+import yamlToJson from "../../utils/json/yamlToJson.utils";
+import CsvToJson from "../../utils/json/csvToJson.utils";
 
 export const Route = createFileRoute("/_json/json-conversions")({
 	component: JsonConversions,

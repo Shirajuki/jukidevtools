@@ -12,6 +12,7 @@
 		"deploy": "bun run build && gh-pages -d dist"
 	},
 	"dependencies": {
+		"@million/lint": "^1.0.14",
 		"@peculiar/x509": "^1.9.7",
 		"@reduxjs/toolkit": "^2.2.3",
 		"@sqltools/formatter": "^1.2.5",

@@ -1,7 +1,7 @@
 import { Form, InputNumber, Button, type FormProps, Radio, Checkbox } from "antd";
 import { ArrowRightOutlined, CopyOutlined } from "@ant-design/icons";
 import { useRef, useState } from "react";
-import loremIpsum from "../../utils/loremIpsum.utils";
+import loremIpsum from "../../utils/text/loremIpsum.utils";
 import { useAppDispatch } from "../../store/hooks";
 import { error } from "../../store/message/message.slice";
 import useCopyText from "../../hooks/useCopyText.hooks";

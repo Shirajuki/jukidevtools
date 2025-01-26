@@ -1,9 +1,9 @@
-import { xml2json } from 'xml-js'
-import convertToNativeType from './convertToNativeType.utils'
+import { xml2json } from "xml-js";
+import convertToNativeType from "./convertToNativeType.utils";
 
 interface IXmlToJsonOptions {
-	xml: string,
-	indentSize: number
+	xml: string;
+	indentSize: number;
 }
 
 const xmlToJson = (options: IXmlToJsonOptions): string => {
@@ -19,42 +19,41 @@ const xmlToJson = (options: IXmlToJsonOptions): string => {
 		textFn: (value, parentElement) => {
 			try {
 				// @ts-expect-error No types found
-				const keyNo = Object.keys(parentElement._parent).length
+				const keyNo = Object.keys(parentElement._parent).length;
 				// @ts-expect-error No types found
-				const keyName = Object.keys(parentElement._parent)[keyNo-1]
+				const keyName = Object.keys(parentElement._parent)[keyNo - 1];
 
 				// @ts-expect-error No types found
 				if (parentElement._attributes) {
 					const attributes: {
-						[attribute: string]: string|number|boolean
-					} = {
-						
-					}
+						[attribute: string]: string | number | boolean;
+					} = {};
 
 					// @ts-expect-error No types found
-					Object.entries<string>(parentElement._attributes).forEach(([attribute, value]) => {
+					const entries = Object.entries(parentElement._attributes);
+					for (const [attribute, value] of entries) {
 						if (attributes[attribute] === undefined) {
-							attributes[attribute] = convertToNativeType(value)
+							// @ts-expect-error No types found
+							attributes[attribute] = convertToNativeType(value);
 						}
-					})
+					}
 
 					// @ts-expect-error No types found
 					parentElement._parent[keyName] = {
 						_value: convertToNativeType(value),
-						_attributes: attributes
-					}
+						_attributes: attributes,
+					};
 				} else {
 					// @ts-expect-error No types found
-					parentElement._parent[keyName] = convertToNativeType(value)
+					parentElement._parent[keyName] = convertToNativeType(value);
 				}
-			}
-			catch(e) {
+			} catch (e) {
 				// Do nothing
 			}
-		}
-	})
+		},
+	});
 
-	return json
-}
+	return json;
+};
 
-export default xmlToJson
+export default xmlToJson;

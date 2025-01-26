@@ -55,9 +55,6 @@ const EncodingUrlEncoderDecoderLazyImport = createFileRoute(
 const EncodingUnicodeToHexConverterLazyImport = createFileRoute(
   '/_encoding/unicode-to-hex-converter',
 )()
-const EncodingBase64EncoderDecoderLazyImport = createFileRoute(
-  '/_encoding/base64-encoder-decoder',
-)()
 
 // Create/Update Routes
 
@@ -215,17 +212,6 @@ const EncodingUnicodeToHexConverterLazyRoute =
     ),
   )
 
-const EncodingBase64EncoderDecoderLazyRoute =
-  EncodingBase64EncoderDecoderLazyImport.update({
-    id: '/_encoding/base64-encoder-decoder',
-    path: '/base64-encoder-decoder',
-    getParentRoute: () => rootRoute,
-  } as any).lazy(() =>
-    import('./routes/_encoding/base64-encoder-decoder.lazy').then(
-      (d) => d.Route,
-    ),
-  )
-
 const JsonJsonConversionsRoute = JsonJsonConversionsImport.update({
   id: '/_json/json-conversions',
   path: '/json-conversions',
@@ -248,13 +234,6 @@ declare module '@tanstack/react-router' {
       path: '/json-conversions'
       fullPath: '/json-conversions'
       preLoaderRoute: typeof JsonJsonConversionsImport
-      parentRoute: typeof rootRoute
-    }
-    '/_encoding/base64-encoder-decoder': {
-      id: '/_encoding/base64-encoder-decoder'
-      path: '/base64-encoder-decoder'
-      fullPath: '/base64-encoder-decoder'
-      preLoaderRoute: typeof EncodingBase64EncoderDecoderLazyImport
       parentRoute: typeof rootRoute
     }
     '/_encoding/unicode-to-hex-converter': {
@@ -384,7 +363,6 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute
   '/json-conversions': typeof JsonJsonConversionsRoute
-  '/base64-encoder-decoder': typeof EncodingBase64EncoderDecoderLazyRoute
   '/unicode-to-hex-converter': typeof EncodingUnicodeToHexConverterLazyRoute
   '/url-encoder-decoder': typeof EncodingUrlEncoderDecoderLazyRoute
   '/image-compressor': typeof ImageImageCompressorLazyRoute
@@ -407,7 +385,6 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
   '/json-conversions': typeof JsonJsonConversionsRoute
-  '/base64-encoder-decoder': typeof EncodingBase64EncoderDecoderLazyRoute
   '/unicode-to-hex-converter': typeof EncodingUnicodeToHexConverterLazyRoute
   '/url-encoder-decoder': typeof EncodingUrlEncoderDecoderLazyRoute
   '/image-compressor': typeof ImageImageCompressorLazyRoute
@@ -431,7 +408,6 @@ export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexLazyRoute
   '/_json/json-conversions': typeof JsonJsonConversionsRoute
-  '/_encoding/base64-encoder-decoder': typeof EncodingBase64EncoderDecoderLazyRoute
   '/_encoding/unicode-to-hex-converter': typeof EncodingUnicodeToHexConverterLazyRoute
   '/_encoding/url-encoder-decoder': typeof EncodingUrlEncoderDecoderLazyRoute
   '/_image/image-compressor': typeof ImageImageCompressorLazyRoute
@@ -456,7 +432,6 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/json-conversions'
-    | '/base64-encoder-decoder'
     | '/unicode-to-hex-converter'
     | '/url-encoder-decoder'
     | '/image-compressor'
@@ -478,7 +453,6 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/json-conversions'
-    | '/base64-encoder-decoder'
     | '/unicode-to-hex-converter'
     | '/url-encoder-decoder'
     | '/image-compressor'
@@ -500,7 +474,6 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/_json/json-conversions'
-    | '/_encoding/base64-encoder-decoder'
     | '/_encoding/unicode-to-hex-converter'
     | '/_encoding/url-encoder-decoder'
     | '/_image/image-compressor'
@@ -524,7 +497,6 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexLazyRoute: typeof IndexLazyRoute
   JsonJsonConversionsRoute: typeof JsonJsonConversionsRoute
-  EncodingBase64EncoderDecoderLazyRoute: typeof EncodingBase64EncoderDecoderLazyRoute
   EncodingUnicodeToHexConverterLazyRoute: typeof EncodingUnicodeToHexConverterLazyRoute
   EncodingUrlEncoderDecoderLazyRoute: typeof EncodingUrlEncoderDecoderLazyRoute
   ImageImageCompressorLazyRoute: typeof ImageImageCompressorLazyRoute
@@ -547,7 +519,6 @@ export interface RootRouteChildren {
 const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
   JsonJsonConversionsRoute: JsonJsonConversionsRoute,
-  EncodingBase64EncoderDecoderLazyRoute: EncodingBase64EncoderDecoderLazyRoute,
   EncodingUnicodeToHexConverterLazyRoute:
     EncodingUnicodeToHexConverterLazyRoute,
   EncodingUrlEncoderDecoderLazyRoute: EncodingUrlEncoderDecoderLazyRoute,
@@ -581,7 +552,6 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/_json/json-conversions",
-        "/_encoding/base64-encoder-decoder",
         "/_encoding/unicode-to-hex-converter",
         "/_encoding/url-encoder-decoder",
         "/_image/image-compressor",
@@ -606,9 +576,6 @@ export const routeTree = rootRoute
     },
     "/_json/json-conversions": {
       "filePath": "_json/json-conversions.tsx"
-    },
-    "/_encoding/base64-encoder-decoder": {
-      "filePath": "_encoding/base64-encoder-decoder.lazy.tsx"
     },
     "/_encoding/unicode-to-hex-converter": {
       "filePath": "_encoding/unicode-to-hex-converter.lazy.tsx"

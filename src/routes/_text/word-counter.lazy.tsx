@@ -4,7 +4,7 @@ import type * as monaco from "monaco-editor";
 import InputOutputLayout from "../../layouts/InputOutputLayout/InputOutputLayout.component";
 import CodeEditor from "../../components/CodeEditor.component";
 import textSample from "../../data/text-sample.txt?raw";
-import wordCount from "../../utils/wordCount.utils";
+import wordCount from "../../utils/text/wordCount.utils";
 import styles from "./word-counter.module.scss";
 import { createLazyFileRoute } from "@tanstack/react-router";
 

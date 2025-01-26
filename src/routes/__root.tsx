@@ -51,7 +51,8 @@ function AppLayout() {
 
 		outer: for (const toolRouteGroup of TOOL_ROUTES) {
 			for (const route of toolRouteGroup.routes) {
-				if (route.path === location.pathname) {
+				const currentPath = location.pathname.replace("/jukidevtools", "");
+				if (route.path === currentPath) {
 					toolRoute = route;
 					break outer;
 				}
@@ -62,7 +63,7 @@ function AppLayout() {
 	}, [location]);
 
 	const routeLabel = useMemo(() => {
-		if (location.pathname === "/") return "";
+		if (location.pathname === "/jukidevtools/") return "";
 		if (!toolRoute) return "Page Not Found";
 		return toolRoute.label;
 	}, [location, toolRoute]);

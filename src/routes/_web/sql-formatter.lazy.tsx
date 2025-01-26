@@ -8,7 +8,7 @@ import useCopyText from "../../hooks/useCopyText.hooks";
 import InputOutputLayout from "../../layouts/InputOutputLayout/InputOutputLayout.component";
 import CodeEditor from "../../components/CodeEditor.component";
 import sqlSample from "../../data/sql-sample.minified.sql?raw";
-import beautifySql from "../../utils/beautifySql.utils";
+import beautifySql from "../../utils/web/beautifySql.utils";
 import { createLazyFileRoute } from "@tanstack/react-router";
 
 export const Route = createLazyFileRoute("/_web/sql-formatter")({

@@ -1,15 +1,15 @@
 import { Form, InputNumber, Button, type FormProps, Checkbox, Space } from "antd";
 import { ArrowRightOutlined, CopyOutlined } from "@ant-design/icons";
 import { useRef, useState } from "react";
-import randomString from "../../utils/randomString.utils";
+import randomString from "../../utils/text/randomString.utils";
 import { useAppDispatch } from "../../store/hooks";
 import { error } from "../../store/message/message.slice";
 import useCopyText from "../../hooks/useCopyText.hooks";
 import InputOutputLayout from "../../layouts/InputOutputLayout/InputOutputLayout.component";
 import CodeEditor from "../../components/CodeEditor.component";
 import { createLazyFileRoute } from "@tanstack/react-router";
-import hash, { type IHashAlgorithm } from "../../utils/hash.utils";
-import generateUuid from "../../utils/generateUuid.utils";
+import hash, { type IHashAlgorithm } from "../../utils/text/hash.utils";
+import generateUuid from "../../utils/text/generateUuid.utils";
 
 // TODO: https://1password.com/password-generator
 export const Route = createLazyFileRoute("/_text/random-string-generator")({

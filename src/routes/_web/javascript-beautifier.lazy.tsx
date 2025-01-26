@@ -8,9 +8,9 @@ import useCopyText from "../../hooks/useCopyText.hooks";
 import InputOutputLayout from "../../layouts/InputOutputLayout/InputOutputLayout.component";
 import CodeEditor from "../../components/CodeEditor.component";
 import jsSample from "../../data/js-sample.js?raw";
-import beautifyJs from "../../utils/beautifyJs.utils";
+import beautifyJs from "../../utils/web/beautifyJs.utils";
 import { createLazyFileRoute } from "@tanstack/react-router";
-import minifyJs from "../../utils/minifyJs.utils";
+import minifyJs from "../../utils/web/minifyJs.utils";
 
 export const Route = createLazyFileRoute("/_web/javascript-beautifier")({
 	component: JavaScriptBeautifier,

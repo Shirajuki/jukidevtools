@@ -6,9 +6,9 @@ import useCopyText from "../../hooks/useCopyText.hooks";
 import InputOutputLayout from "../../layouts/InputOutputLayout/InputOutputLayout.component";
 import CodeEditor from "../../components/CodeEditor.component";
 import textSample from "../../data/text-sample.txt?raw";
-import unicodeToHex from "../../utils/unicodeToHex.utils";
+import unicodeToHex from "../../utils/text/unicodeToHex.utils";
 import { createLazyFileRoute } from "@tanstack/react-router";
-import hexToUnicode from "../../utils/hexToUnicode.utils";
+import hexToUnicode from "../../utils/text/hexToUnicode.utils";
 
 export const Route = createLazyFileRoute("/_encoding/unicode-to-hex-converter")({
 	component: UnicodeToHexConverter,

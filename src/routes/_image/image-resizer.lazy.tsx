@@ -16,10 +16,10 @@ import { ArrowRightOutlined, UploadOutlined, DownloadOutlined } from "@ant-desig
 import { useAppDispatch } from "../../store/hooks";
 import InputOutputLayout from "../../layouts/InputOutputLayout/InputOutputLayout.component";
 import { error, success } from "../../store/message/message.slice";
-import imageToBase64 from "../../utils/imageToBase64.utils";
-import isBase64Valid from "../../utils/isBase64Valid.utils";
-import getImageFileDimension from "../../utils/getImageFileDimension.utils";
-import resizeImage from "../../utils/resizeImage.utils";
+import imageToBase64 from "../../utils/image/imageToBase64.utils";
+import isBase64Valid from "../../utils/image/isBase64Valid.utils";
+import getImageFileDimension from "../../utils/image/getImageFileDimension.utils";
+import resizeImage from "../../utils/image/resizeImage.utils";
 import { createLazyFileRoute } from "@tanstack/react-router";
 
 export const Route = createLazyFileRoute("/_image/image-resizer")({
