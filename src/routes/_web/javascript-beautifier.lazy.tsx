@@ -5,7 +5,7 @@ import type * as monaco from "monaco-editor";
 import { useAppDispatch } from "../../store/hooks";
 import { success } from "../../store/message/message.slice";
 import useCopyText from "../../hooks/useCopyText.hooks";
-import InputOutputLayout from "../../layouts/InputOutputLayout/InputOutputLayout.component";
+import InputOutputLayout from "../../layouts/InputOutputLayout.component";
 import CodeEditor from "../../components/CodeEditor.component";
 import jsSample from "../../data/js-sample.js?raw";
 import beautifyJs from "../../utils/web/beautifyJs.utils";

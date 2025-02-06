@@ -1,7 +1,7 @@
 import { type FC, type PropsWithChildren, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { ConfigProvider, theme } from "antd";
-import { selectTheme } from "../../store/theme/theme.selector";
+import { selectTheme } from "../store/theme/theme.selector";
 
 const { defaultAlgorithm, darkAlgorithm } = theme;
 

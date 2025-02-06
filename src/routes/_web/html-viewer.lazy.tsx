@@ -4,7 +4,7 @@ import { ArrowRightOutlined } from "@ant-design/icons";
 import type * as monaco from "monaco-editor";
 import { useAppDispatch } from "../../store/hooks";
 import { success } from "../../store/message/message.slice";
-import InputOutputLayout from "../../layouts/InputOutputLayout/InputOutputLayout.component";
+import InputOutputLayout from "../../layouts/InputOutputLayout.component";
 import CodeEditor from "../../components/CodeEditor.component";
 import HtmlViewerComponent from "../../components/HtmlViewer.component";
 import htmlSample from "../../data/html-sample.html?raw";

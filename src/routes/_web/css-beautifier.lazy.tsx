@@ -6,7 +6,7 @@ import type * as monaco from "monaco-editor";
 import { useAppDispatch } from "../../store/hooks";
 import { success } from "../../store/message/message.slice";
 import useCopyText from "../../hooks/useCopyText.hooks";
-import InputOutputLayout from "../../layouts/InputOutputLayout/InputOutputLayout.component";
+import InputOutputLayout from "../../layouts/InputOutputLayout.component";
 import CodeEditor from "../../components/CodeEditor.component";
 import cssSample from "../../data/css-sample.css?raw";
 import { createLazyFileRoute } from "@tanstack/react-router";

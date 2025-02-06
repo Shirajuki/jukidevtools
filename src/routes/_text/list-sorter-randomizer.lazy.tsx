@@ -3,7 +3,7 @@ import { Button, Select, Space } from "antd";
 import { CopyOutlined } from "@ant-design/icons";
 import type * as monaco from "monaco-editor";
 import useCopyText from "../../hooks/useCopyText.hooks";
-import InputOutputLayout from "../../layouts/InputOutputLayout/InputOutputLayout.component";
+import InputOutputLayout from "../../layouts/InputOutputLayout.component";
 import CodeEditor from "../../components/CodeEditor.component";
 import textSample from "../../data/text-sample.original.txt?raw";
 import shuffleArray from "../../utils/text/shuffleArray.utils";

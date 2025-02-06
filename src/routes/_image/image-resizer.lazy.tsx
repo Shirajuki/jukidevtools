@@ -14,7 +14,7 @@ import {
 } from "antd";
 import { ArrowRightOutlined, UploadOutlined, DownloadOutlined } from "@ant-design/icons";
 import { useAppDispatch } from "../../store/hooks";
-import InputOutputLayout from "../../layouts/InputOutputLayout/InputOutputLayout.component";
+import InputOutputLayout from "../../layouts/InputOutputLayout.component";
 import { error, success } from "../../store/message/message.slice";
 import imageToBase64 from "../../utils/image/imageToBase64.utils";
 import isBase64Valid from "../../utils/image/isBase64Valid.utils";

@@ -3,7 +3,7 @@ import { Button, Radio, type RadioChangeEvent, Space } from "antd";
 import { CopyOutlined } from "@ant-design/icons";
 import type * as monaco from "monaco-editor";
 import useCopyText from "../../hooks/useCopyText.hooks";
-import InputOutputLayout from "../../layouts/InputOutputLayout/InputOutputLayout.component";
+import InputOutputLayout from "../../layouts/InputOutputLayout.component";
 import CodeEditor from "../../components/CodeEditor.component";
 import Decomposerize from "decomposerize";
 import Composerize from "composerize";

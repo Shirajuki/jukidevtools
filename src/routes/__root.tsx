@@ -204,7 +204,6 @@ function AppLayout() {
 					</Layout>
 				</Layout>
 			</App>
-			<TanStackRouterDevtools />
 		</>
 	);
 }

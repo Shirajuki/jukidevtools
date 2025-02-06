@@ -5,7 +5,7 @@ import loremIpsum from "../../utils/text/loremIpsum.utils";
 import { useAppDispatch } from "../../store/hooks";
 import { error } from "../../store/message/message.slice";
 import useCopyText from "../../hooks/useCopyText.hooks";
-import InputOutputLayout from "../../layouts/InputOutputLayout/InputOutputLayout.component";
+import InputOutputLayout from "../../layouts/InputOutputLayout.component";
 import CodeEditor from "../../components/CodeEditor.component";
 import { createLazyFileRoute } from "@tanstack/react-router";
 

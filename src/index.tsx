@@ -4,7 +4,7 @@ import { Provider as ReduxProvider } from "react-redux";
 import store from "./store";
 
 import "./index.scss";
-import ThemeProvider from "./providers/ThemeProvider/ThemeProvider.component";
+import ThemeProvider from "./providers/ThemeProvider.component";
 
 import { RouterProvider, createRouter } from "@tanstack/react-router";
 import { routeTree } from "./routeTree.gen";

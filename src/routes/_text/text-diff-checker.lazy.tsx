@@ -6,7 +6,7 @@ import CodeEditor from "../../components/CodeEditor.component";
 import originalTextSample from "../../data/text-sample.original.txt?raw";
 import changedTextSample from "../../data/text-sample.changed.txt?raw";
 import debounce from "../../utils/text/debounce.utils";
-import SingleColumnLayout from "../../layouts/SingleColumnLayout/SingleColumnLayout.component";
+import SingleColumnLayout from "../../layouts/SingleColumnLayout.component";
 import DiffCodeViewer from "../../components/DiffCodeViewer.component";
 import { createLazyFileRoute } from "@tanstack/react-router";
 

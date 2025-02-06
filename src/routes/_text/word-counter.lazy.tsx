@@ -1,7 +1,7 @@
 import { useMemo, useRef, useState } from "react";
 import { Button, Card, Empty, Space, Statistic, Typography } from "antd";
 import type * as monaco from "monaco-editor";
-import InputOutputLayout from "../../layouts/InputOutputLayout/InputOutputLayout.component";
+import InputOutputLayout from "../../layouts/InputOutputLayout.component";
 import CodeEditor from "../../components/CodeEditor.component";
 import textSample from "../../data/text-sample.txt?raw";
 import wordCount from "../../utils/text/wordCount.utils";

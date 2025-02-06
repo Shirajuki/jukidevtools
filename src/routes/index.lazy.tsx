@@ -1,5 +1,5 @@
 import { Typography } from "antd";
-import SingleColumnLayout from "../layouts/SingleColumnLayout/SingleColumnLayout.component";
+import SingleColumnLayout from "../layouts/SingleColumnLayout.component";
 
 import { createLazyFileRoute } from "@tanstack/react-router";
 
