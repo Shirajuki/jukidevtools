@@ -9,6 +9,7 @@ import InputOutputLayout from "../../layouts/InputOutputLayout.component";
 import CodeEditor from "../../components/CodeEditor.component";
 import jsonSample from "../../data/json-sample.json?raw";
 import { createLazyFileRoute } from "@tanstack/react-router";
+import cleanJson from "../../utils/json/cleanJson.utils";
 
 export const Route = createLazyFileRoute("/_json/json-beautifier")({
 	component: JsonBeautifier,
@@ -44,8 +45,9 @@ function JsonBeautifier() {
 		options.current.lastUsed = "format";
 		const json = trigger ? options.current.json : options.current.formattedJson;
 		try {
+			const cleanedJson = cleanJson(json);
 			const formattedJson = JSON.stringify(
-				JSON.parse(json),
+				JSON.parse(cleanedJson),
 				null,
 				" ".repeat(options.current.tabSize),
 			);
@@ -60,7 +62,8 @@ function JsonBeautifier() {
 		options.current.lastUsed = "minify";
 		const json = trigger ? options.current.json : options.current.formattedJson;
 		try {
-			const minifiedJson = JSON.stringify(JSON.parse(json));
+			const cleanedJson = cleanJson(json);
+			const minifiedJson = JSON.stringify(JSON.parse(cleanedJson));
 			outputCodeEditorRef.current?.setValue(minifiedJson);
 			if (trigger) dispatch(success());
 		} catch (err) {

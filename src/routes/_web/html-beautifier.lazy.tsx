@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Button, Select, Space } from "antd";
 import { ArrowRightOutlined, CopyOutlined } from "@ant-design/icons";
 import type * as monaco from "monaco-editor";
@@ -7,6 +7,7 @@ import { success } from "../../store/message/message.slice";
 import useCopyText from "../../hooks/useCopyText.hooks";
 import InputOutputLayout from "../../layouts/InputOutputLayout.component";
 import CodeEditor from "../../components/CodeEditor.component";
+import HtmlViewerComponent from "../../components/HtmlViewer.component";
 import htmlSample from "../../data/html-sample.html?raw";
 import beautifyHtml from "../../utils/web/beautifyHtml.utils";
 import { createLazyFileRoute } from "@tanstack/react-router";
@@ -19,13 +20,14 @@ export const Route = createLazyFileRoute("/_web/html-beautifier")({
 export interface IOptionTypes {
 	html: string;
 	formattedHtml: string;
-	lastUsed: "format" | "minify";
+	lastUsed: "format" | "minify" | "html";
 	tabSize: number;
 }
 
 function HtmlBeautifier() {
 	const dispatch = useAppDispatch();
 	const copyText = useCopyText();
+	const [updatingFlag, setUpdatingFlag] = useState(false);
 
 	const codeEditorRef = useRef<monaco.editor.IStandaloneCodeEditor>(null);
 	const outputCodeEditorRef = useRef<monaco.editor.IStandaloneCodeEditor>(null);
@@ -49,6 +51,7 @@ function HtmlBeautifier() {
 			indentSize: options.current.tabSize,
 		});
 		outputCodeEditorRef.current?.setValue(formattedHtml);
+		setUpdatingFlag(!updatingFlag);
 		if (trigger) dispatch(success());
 	};
 
@@ -57,6 +60,15 @@ function HtmlBeautifier() {
 		const html = trigger ? options.current.html : options.current.formattedHtml;
 		const minifiedHtml = minifyHtml(html);
 		outputCodeEditorRef.current?.setValue(minifiedHtml);
+		setUpdatingFlag(!updatingFlag);
+		if (trigger) dispatch(success());
+	};
+
+	const html = (trigger: boolean) => {
+		options.current.lastUsed = "html";
+		const html = trigger ? options.current.html : options.current.formattedHtml;
+		options.current.formattedHtml = html;
+		setUpdatingFlag(!updatingFlag);
 		if (trigger) dispatch(success());
 	};
 
@@ -94,6 +106,14 @@ function HtmlBeautifier() {
 					>
 						Minify
 					</Button>
+					<Button
+						type="primary"
+						icon={<ArrowRightOutlined />}
+						size="large"
+						onClick={() => html(true)}
+					>
+						View
+					</Button>
 				</Space>
 			}
 			InputView={
@@ -122,14 +142,22 @@ function HtmlBeautifier() {
 				</Space>
 			}
 			OutputView={
-				<CodeEditor
-					ref={outputCodeEditorRef}
-					code={options.current.formattedHtml}
-					language="html"
-					onChange={(html) => {
-						options.current.formattedHtml = html;
-					}}
-				/>
+				options.current.lastUsed === "html" ? (
+					<HtmlViewerComponent
+						html={options.current.formattedHtml}
+						updatingFlag={updatingFlag}
+						white
+					/>
+				) : (
+					<CodeEditor
+						ref={outputCodeEditorRef}
+						code={options.current.formattedHtml}
+						language="html"
+						onChange={(html) => {
+							options.current.formattedHtml = html;
+						}}
+					/>
+				)
 			}
 		/>
 	);

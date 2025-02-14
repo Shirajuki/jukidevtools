@@ -19,7 +19,6 @@ import { useSelector } from "react-redux";
 import { selectTheme } from "../store/theme/theme.selector";
 import { toggleTheme } from "../store/theme/theme.slice";
 import { createRootRoute, Link, Outlet, useLocation } from "@tanstack/react-router";
-import { TanStackRouterDevtools } from "@tanstack/router-devtools";
 import { ErrorBoundary } from "react-error-boundary";
 import InternalError from "../components/InternalError.component";
 

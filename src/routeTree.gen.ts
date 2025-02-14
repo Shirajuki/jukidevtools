@@ -22,7 +22,6 @@ const WebSqlFormatterLazyImport = createFileRoute('/_web/sql-formatter')()
 const WebJavascriptBeautifierLazyImport = createFileRoute(
   '/_web/javascript-beautifier',
 )()
-const WebHtmlViewerLazyImport = createFileRoute('/_web/html-viewer')()
 const WebHtmlBeautifierLazyImport = createFileRoute('/_web/html-beautifier')()
 const WebCssBeautifierLazyImport = createFileRoute('/_web/css-beautifier')()
 const UtilitiesDockerComposeConverterLazyImport = createFileRoute(
@@ -80,14 +79,6 @@ const WebJavascriptBeautifierLazyRoute =
   } as any).lazy(() =>
     import('./routes/_web/javascript-beautifier.lazy').then((d) => d.Route),
   )
-
-const WebHtmlViewerLazyRoute = WebHtmlViewerLazyImport.update({
-  id: '/_web/html-viewer',
-  path: '/html-viewer',
-  getParentRoute: () => rootRoute,
-} as any).lazy(() =>
-  import('./routes/_web/html-viewer.lazy').then((d) => d.Route),
-)
 
 const WebHtmlBeautifierLazyRoute = WebHtmlBeautifierLazyImport.update({
   id: '/_web/html-beautifier',
@@ -334,13 +325,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WebHtmlBeautifierLazyImport
       parentRoute: typeof rootRoute
     }
-    '/_web/html-viewer': {
-      id: '/_web/html-viewer'
-      path: '/html-viewer'
-      fullPath: '/html-viewer'
-      preLoaderRoute: typeof WebHtmlViewerLazyImport
-      parentRoute: typeof rootRoute
-    }
     '/_web/javascript-beautifier': {
       id: '/_web/javascript-beautifier'
       path: '/javascript-beautifier'
@@ -377,7 +361,6 @@ export interface FileRoutesByFullPath {
   '/docker-compose-converter': typeof UtilitiesDockerComposeConverterLazyRoute
   '/css-beautifier': typeof WebCssBeautifierLazyRoute
   '/html-beautifier': typeof WebHtmlBeautifierLazyRoute
-  '/html-viewer': typeof WebHtmlViewerLazyRoute
   '/javascript-beautifier': typeof WebJavascriptBeautifierLazyRoute
   '/sql-formatter': typeof WebSqlFormatterLazyRoute
 }
@@ -399,7 +382,6 @@ export interface FileRoutesByTo {
   '/docker-compose-converter': typeof UtilitiesDockerComposeConverterLazyRoute
   '/css-beautifier': typeof WebCssBeautifierLazyRoute
   '/html-beautifier': typeof WebHtmlBeautifierLazyRoute
-  '/html-viewer': typeof WebHtmlViewerLazyRoute
   '/javascript-beautifier': typeof WebJavascriptBeautifierLazyRoute
   '/sql-formatter': typeof WebSqlFormatterLazyRoute
 }
@@ -422,7 +404,6 @@ export interface FileRoutesById {
   '/_utilities/docker-compose-converter': typeof UtilitiesDockerComposeConverterLazyRoute
   '/_web/css-beautifier': typeof WebCssBeautifierLazyRoute
   '/_web/html-beautifier': typeof WebHtmlBeautifierLazyRoute
-  '/_web/html-viewer': typeof WebHtmlViewerLazyRoute
   '/_web/javascript-beautifier': typeof WebJavascriptBeautifierLazyRoute
   '/_web/sql-formatter': typeof WebSqlFormatterLazyRoute
 }
@@ -446,7 +427,6 @@ export interface FileRouteTypes {
     | '/docker-compose-converter'
     | '/css-beautifier'
     | '/html-beautifier'
-    | '/html-viewer'
     | '/javascript-beautifier'
     | '/sql-formatter'
   fileRoutesByTo: FileRoutesByTo
@@ -467,7 +447,6 @@ export interface FileRouteTypes {
     | '/docker-compose-converter'
     | '/css-beautifier'
     | '/html-beautifier'
-    | '/html-viewer'
     | '/javascript-beautifier'
     | '/sql-formatter'
   id:
@@ -488,7 +467,6 @@ export interface FileRouteTypes {
     | '/_utilities/docker-compose-converter'
     | '/_web/css-beautifier'
     | '/_web/html-beautifier'
-    | '/_web/html-viewer'
     | '/_web/javascript-beautifier'
     | '/_web/sql-formatter'
   fileRoutesById: FileRoutesById
@@ -511,7 +489,6 @@ export interface RootRouteChildren {
   UtilitiesDockerComposeConverterLazyRoute: typeof UtilitiesDockerComposeConverterLazyRoute
   WebCssBeautifierLazyRoute: typeof WebCssBeautifierLazyRoute
   WebHtmlBeautifierLazyRoute: typeof WebHtmlBeautifierLazyRoute
-  WebHtmlViewerLazyRoute: typeof WebHtmlViewerLazyRoute
   WebJavascriptBeautifierLazyRoute: typeof WebJavascriptBeautifierLazyRoute
   WebSqlFormatterLazyRoute: typeof WebSqlFormatterLazyRoute
 }
@@ -535,7 +512,6 @@ const rootRouteChildren: RootRouteChildren = {
     UtilitiesDockerComposeConverterLazyRoute,
   WebCssBeautifierLazyRoute: WebCssBeautifierLazyRoute,
   WebHtmlBeautifierLazyRoute: WebHtmlBeautifierLazyRoute,
-  WebHtmlViewerLazyRoute: WebHtmlViewerLazyRoute,
   WebJavascriptBeautifierLazyRoute: WebJavascriptBeautifierLazyRoute,
   WebSqlFormatterLazyRoute: WebSqlFormatterLazyRoute,
 }
@@ -566,7 +542,6 @@ export const routeTree = rootRoute
         "/_utilities/docker-compose-converter",
         "/_web/css-beautifier",
         "/_web/html-beautifier",
-        "/_web/html-viewer",
         "/_web/javascript-beautifier",
         "/_web/sql-formatter"
       ]
@@ -618,9 +593,6 @@ export const routeTree = rootRoute
     },
     "/_web/html-beautifier": {
       "filePath": "_web/html-beautifier.lazy.tsx"
-    },
-    "/_web/html-viewer": {
-      "filePath": "_web/html-viewer.lazy.tsx"
     },
     "/_web/javascript-beautifier": {
       "filePath": "_web/javascript-beautifier.lazy.tsx"

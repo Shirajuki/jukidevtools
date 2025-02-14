@@ -54,12 +54,6 @@ export const TOOL_ROUTES: IToolRouteGroup[] = [
 				],
 			},
 			{
-				label: "HTML Viewer",
-				path: "/html-viewer",
-				icon: EyeOutlined,
-				alias: ["HTML Previewer", "HTML Sandbox"],
-			},
-			{
 				label: "SQL Formatter",
 				path: "/sql-formatter",
 				icon: ConsoleSqlOutlined,
